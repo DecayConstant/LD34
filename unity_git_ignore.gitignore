@@ -1,0 +1,32 @@
+# =============== #
+# Unity generated #
+# =============== #
+Ludum-Dare-Entry/[Tt]emp/
+Ludum-Dare-Entry/[Oo]bj/
+Ludum-Dare-Entry/[Bb]uild
+Ludum-Dare-Entry/[Ll]ibrary/
+Ludum-Dare-Entry/sysinfo.txt
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+Ludum-Dare-Entry/[Ee]xported[Oo]bj/
+Ludum-Dare-Entry/*.userprefs
+Ludum-Dare-Entry/*.csproj
+Ludum-Dare-Entry/*.pidb
+Ludum-Dare-Entry/*.suo
+Ludum-Dare-Entry/*.sln*
+Ludum-Dare-Entry/*.user
+Ludum-Dare-Entry/*.unityproj
+Ludum-Dare-Entry/*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+Ludum-Dare-Entry/.DS_Store*
+Ludum-Dare-Entry/._*
+Ludum-Dare-Entry/.Spotlight-V100
+Ludum-Dare-Entry/.Trashes
+Ludum-Dare-Entry/Icon?
+Ludum-Dare-Entry/ehthumbs.db
+Ludum-Dare-Entry/[Tt]humbs.db
