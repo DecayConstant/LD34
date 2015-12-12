@@ -1,8 +1,6 @@
 ﻿#pragma strict
 
-#pragma strict
-
-public class RandomDebuff extends Action {
+public class RandomBuff extends Action {
 
 	public function action(actor : Entity, target:Entity){
 		var debuff_num = Random.Range(0,3);
@@ -26,7 +24,7 @@ public class RandomDebuff extends Action {
 
     };
 
-    public function RandomDebuff(){
+    public function RandomBuff(){
     	
     };
 

@@ -6,7 +6,8 @@ LudumDare34/[Oo]bj/
 LudumDare34/[Bb]uild
 LudumDare34/[Ll]ibrary/
 LudumDare34/sysinfo.txt
- 
+LudumDare34/*.meta
+LudumDare34/**/*.meta
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
