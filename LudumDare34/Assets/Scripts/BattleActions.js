@@ -50,8 +50,6 @@ function Awake(){
 
 }
 function Start(){
-	//var hero : Hero;
-	//var enemy : Enemy;
 
 	hero.entity_name='Paul';
 	enemy.entity_name='Bart';
@@ -76,36 +74,11 @@ function Start(){
 	BattleActions[14] = randomBuff;
 	BattleActions[15] = randomDebuff;
 
-
-//    BattleActions[1] = new Action(50, function(actor : Entity, target:Entity){
-//    	var damage = 50;
-//        if(target.karate == -1){
-//            damage = parseInt(damage*.5);
-//            target.takeDamage(damage);
-//            Debug.Log(target.name+' is strong against your karate. You deal '+damage+' damage.');
-//        }else if(target.karate == 1){
-//            damage = parseInt(damage*1.5);
-//            target.takeDamage(damage);
-//            Debug.Log(target.name+' is weak against your karate. You deal '+damage+' damage.');
-//        }else{
-//            target.takeDamage(damage);
-//            Debug.Log('You deal '+damage+' damage.');
-//        }
-//    });
-//
     Debug.Log(BattleActions[0]);
     Debug.Log(BattleActions[0].strength);
-    BattleActions[0].action(hero,enemy);
-    //BattleActions[0].action2();
+
+
+    //BattleActions[11].action(hero,enemy);
+    //BattleActions[11].action(hero,enemy);
+
 }
-
-
-
-
-//    recon:{},
-//    random_buff:{},
-//    random_debuff:{},
-//    super_charge:{},
-
-
-//};

@@ -21,7 +21,7 @@ function Update () {
 		}
 		else {
 			input_timer = 3;
-			input_string.text = "GO";
+			input_string.text = "Input Combo!";
 			ready_timer = false;
 			currently_timing = true;
 			input_script.AcceptInput();
