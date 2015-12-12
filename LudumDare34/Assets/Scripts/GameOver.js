@@ -6,7 +6,7 @@ public var gameover_panel : GameObject;
 
 function GameOver() {
 	gameover = true;
-	gameover_panel.active = true;
+	gameover_panel.SetActive(true);
 }
 
 function Update() {
