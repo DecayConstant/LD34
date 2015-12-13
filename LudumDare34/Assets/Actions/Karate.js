@@ -1,9 +1,33 @@
 ﻿#pragma strict
 
+public var soundEffect : AudioClip;
+
+var onEnemyAnimation : GameObject;
+var onPlayerAnimation : GameObject;
+
 public class Karate extends Action {
+
+	function waitAwhile (){
+		
+		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
+		yield WaitForSeconds (1.0);
+		onEnemyAnimation.SetActive(false);
+        onPlayerAnimation.SetActive(false);
+	}
 
 	public function action(actor : Entity, target:Entity){
         var damage : int = strength;
+
+         if(target.playerType == 2){ 
+        		onEnemyAnimation.SetActive(true);
+        		Debug.Log("target is enemy");
+        	}else if (target.playerType == 1) {
+        		onPlayerAnimation.SetActive(true);
+        		Debug.Log("target is player");
+        	}else if (target.playerType == 0){
+        		        		Debug.Log("is zero");
+
+        	}
 
         if(target.karate == 1){
             damage = parseInt(damage*.5);
@@ -17,6 +41,9 @@ public class Karate extends Action {
             target.takeDamage(damage);
             Debug.Log('You deal '+damage+' damage.');
         }
+
+                StartCoroutine(waitAwhile());
+
     };
 
     public function Karate(){

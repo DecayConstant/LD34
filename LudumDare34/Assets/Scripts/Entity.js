@@ -24,6 +24,9 @@ public class Entity extends MonoBehaviour {
     public var taunt_count : int = 0;
     public var health_potions : int = 3;
 
+
+   	public var playerType : int;
+
     public function takeDamage(damage:int){
     	health -= damage;
     }
