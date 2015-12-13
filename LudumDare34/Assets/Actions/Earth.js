@@ -1,9 +1,9 @@
 ﻿#pragma strict
 
-public var soundEffect: AudioClip;
+public var soundEffect : AudioClip;
 
-var onEnemyAnimation: GameObject;
-var onPlayerAnimation: GameObject;
+//var onEnemyAnimation : GameObject;
+//var onPlayerAnimation : GameObject;
 
 public class Earth extends Action {
 
@@ -16,15 +16,8 @@ public class Earth extends Action {
     }
 
     public function action(actor: Entity, target: Entity) {
-        if (target.playerType == 2){
-            onEnemyAnimation.SetActive(true);
-            Debug.Log("target is enemy");
-        } else if (target.playerType == 1) {
-            onPlayerAnimation.SetActive(true);
-            Debug.Log("target is player");
-        } else if (target.playerType == 0) {
-            Debug.Log("is zero");
-        }
+
+        prepareAnimation(target);
 
         var damage = calculateDamage(actor, target, actor.earth, target.earth);
         target.takeDamage(damage);

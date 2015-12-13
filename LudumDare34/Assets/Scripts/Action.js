@@ -2,6 +2,10 @@
 import UnityEngine.UI;
 
 public class Action extends MonoBehaviour{
+
+	var onEnemyAnimation: GameObject;
+	var onPlayerAnimation: GameObject;
+
 	public var strength : int;
 	public var action_name: String;   //This is the name we display to the player. e.g. 'MegaloFrost.'
 	public var generic_name: String; //This is a generic name we use inernally to match actions to buff/debuffs. e.g. 'ice'
@@ -15,6 +19,18 @@ public class Action extends MonoBehaviour{
 
 	public function Action(){
 		strength = 1;
+	};
+
+	function prepareAnimation(target:Entity){
+		if (target.playerType == 2){
+            onEnemyAnimation.SetActive(true);
+            Debug.Log("target is enemy");
+        } else if (target.playerType == 1) {
+            onPlayerAnimation.SetActive(true);
+            Debug.Log("target is player");
+        } else if (target.playerType == 0) {
+            Debug.Log("is zero");
+        }
 	};
 
 	function calculateDamage (actor:Entity, target:Entity, actorBuff:int, targetBuff: int) : int{
@@ -43,17 +59,17 @@ public class Action extends MonoBehaviour{
 
     function getEffectiveness(actorBuff : int, targetBuff : int) : String{
 
-    	var effiectiveness = actorBuff - targetBuff;
+    	var effectiveness = actorBuff - targetBuff;
     	var message:String;
 
-        if(effiectiveness == -2){
+        if(effectiveness == -2){
         //.36
         	message = "It was MEGA SAD.";
-        } else if(effiectiveness == -1){
+        } else if(effectiveness == -1){
         	// .60  
         	//Actor Week or Target Strong
         	message = "It was KINDA BAD.";
-        } else if(effiectiveness == 0){
+        } else if(effectiveness == 0){
 			if(actorBuff == 0 && targetBuff == 0){
 				//In this case they were both neutral.
 				message = "";
@@ -61,11 +77,11 @@ public class Action extends MonoBehaviour{
 				//In this case either they were both strong or both weak.
 				message = "It was MEH.";
 			}
-        } else if(effiectiveness == 1){
+        } else if(effectiveness == 1){
         	//1.5
-        	//Actor Strong OR Target Week.
+        	//Actor Strong OR Target Weak.
         	message = "It was PRETTY GOOD.";
-        } else if(effiectiveness == 2){
+        } else if(effectiveness == 2){
         	//2.25
         	message = "It was SUPER EFFECTIVE.";
         }

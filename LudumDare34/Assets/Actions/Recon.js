@@ -2,7 +2,7 @@
 
 public var soundEffect : AudioClip;
 
-var onEnemyAnimation : GameObject;
+//var onEnemyAnimation : GameObject;
 
 public class Recon extends Action {
 
@@ -16,13 +16,13 @@ public class Recon extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-		if(target.playerType == 2){ 
-    		onEnemyAnimation.SetActive(true);
-    		Debug.Log("target is enemy");
-    	} else if (target.playerType == 0){
-    		Debug.Log("is zero");
-
-    	}
+//		if(target.playerType == 2){ 
+//    		onEnemyAnimation.SetActive(true);
+//    		Debug.Log("target is enemy");
+//    	} else if (target.playerType == 0){
+//    		Debug.Log("is zero");
+//    	}
+    	prepareAnimation(target);
 
     	var battleMessage : String;
 

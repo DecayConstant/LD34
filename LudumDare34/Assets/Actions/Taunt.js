@@ -2,7 +2,7 @@
 
 public var soundEffect : AudioClip;
 
-var onPlayerAnimation : GameObject;
+//var onPlayerAnimation : GameObject;
 
 public class Taunt extends Action {
 	function waitAwhile (){
@@ -14,12 +14,7 @@ public class Taunt extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-		if (actor.playerType == 1) {
-    		onPlayerAnimation.SetActive(true);
-    		Debug.Log("target is player");
-    	} else if (actor.playerType == 0){
-    		Debug.Log("is zero");
-    	}
+		prepareAnimation(target);
 
     	var battleMessage:String;
 
@@ -33,7 +28,6 @@ public class Taunt extends Action {
         }
 
         StartCoroutine(waitAwhile());
-
     }
 
     public function Taunt(){

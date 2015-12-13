@@ -2,7 +2,7 @@
 
 public var soundEffect : AudioClip;
 
-var onPlayerAnimation : GameObject;
+//var onPlayerAnimation : GameObject;
 
 public class HealthPotion extends Action {
 
@@ -14,15 +14,8 @@ public class HealthPotion extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
-		
-		if(actor.playerType == 2){ 
-	    	Debug.Log("target is enemy");
-	    } else if (target.playerType == 1) {
-	    	onPlayerAnimation.SetActive(true);
-	    	Debug.Log("target is player");
-	    } else if (actor.playerType == 0){
-	    	Debug.Log("is zero");
-		}
+
+		prepareAnimation(actor);
 
 		var battleMessage:String;
 

@@ -2,8 +2,8 @@
 
 public var soundEffect : AudioClip;
 
-var onEnemyAnimation : GameObject;
-var onPlayerAnimation : GameObject;
+//var onEnemyAnimation : GameObject;
+//var onPlayerAnimation : GameObject;
 
 public class RandomDebuff extends Action {
 
@@ -17,15 +17,7 @@ public class RandomDebuff extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-	  if(target.playerType == 2){ 
-    		onEnemyAnimation.SetActive(true);
-    		Debug.Log("target is enemy");
-    	}else if (target.playerType == 1) {
-    		onPlayerAnimation.SetActive(true);
-    		Debug.Log("target is player");
-    	}else if (target.playerType == 0){
-    		Debug.Log("is zero");
-    	}
+	    prepareAnimation(target);
 
 		var debuff_num = Random.Range(0,3);
 		var weakness :String;
