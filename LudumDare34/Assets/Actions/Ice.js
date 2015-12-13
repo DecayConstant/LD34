@@ -1,4 +1,4 @@
-﻿# pragma strict
+﻿#pragma strict
 import UnityEngine.UI;
 
 public var soundEffect: AudioClip;
@@ -10,7 +10,7 @@ public class Ice extends Action {
 
     function waitAwhile() {
 
-        GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5 f);
+        GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
         yield WaitForSeconds(1.0);
         onEnemyAnimation.SetActive(false);
         onPlayerAnimation.SetActive(false);

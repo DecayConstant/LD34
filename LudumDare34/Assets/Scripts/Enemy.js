@@ -94,8 +94,8 @@ public class Enemy extends Entity {
 
 		if(reconned == true){
 			enemyStatPanel.SetActive(true);
-		}else {
-			enemyStatPanel.SetActive(false);
+		
+			
 		}
 
 		}

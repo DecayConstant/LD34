@@ -1,4 +1,4 @@
-﻿# pragma strict
+﻿#pragma strict
 
 public var soundEffect: AudioClip;
 
@@ -9,7 +9,7 @@ public class Fire extends Action {
 
     function waitAwhile() {
 
-        GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5 f);
+        GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
         yield WaitForSeconds(1.0);
         onEnemyAnimation.SetActive(false);
         onPlayerAnimation.SetActive(false);
