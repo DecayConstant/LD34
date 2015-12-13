@@ -16,7 +16,7 @@ public class DoubleDown extends Action {
 		if(use_count >=2 ){
 			Debug.Log('YOU DORK!');
 			Debug.Log('YOU LOSE!');
-			gameover_script.GameOver();
+			gameover_script.GameOver("DON'T EVER DO THAT AGAIN!!!");
 		}else{
 			Debug.Log("DON'T EVER DO THAT AGAIN!!!");
 		}
