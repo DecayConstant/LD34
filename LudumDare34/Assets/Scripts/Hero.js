@@ -36,7 +36,7 @@ public class Hero extends Entity {
 	};
 
 	public function UpdateStatus (){
-			
+			Debug.Log("UpdateStatus");
 
 		//Kung fu stat conditions
 		if (kungfu == 1){

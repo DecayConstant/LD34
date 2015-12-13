@@ -15,7 +15,7 @@ var earthUpArrow : GameObject;
 var earthDwnArrow : GameObject;
 
 var poisonCounter : Text;
-
+var enemyStatPanel : GameObject;
 
 public class Enemy extends Entity {
 	//public var taunt_count : int = 0;
@@ -91,6 +91,12 @@ public class Enemy extends Entity {
 
 		//displays the poison counter.
 		poisonCounter.text = poisoned.ToString();
+
+		if(reconned == true){
+			enemyStatPanel.SetActive(true);
+		}else {
+			enemyStatPanel.SetActive(false);
+		}
 
 		}
 	}

@@ -37,6 +37,7 @@ function Update () {
 		if(hero_turn) {
 			battleactions_script.HeroAction(MapInputString(current_input));
 			hero.UpdateStatus();
+			enemy.UpdateStatus();
 			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
 			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
 			hero_turn = false;
@@ -47,6 +48,7 @@ function Update () {
 			battle_timer = 2.0;
 			battleactions_script.EnemyAction();
 			enemy.UpdateStatus();
+			hero.UpdateStatus();
 			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
 			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
 			enemy_turn = false;
