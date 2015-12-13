@@ -30,11 +30,12 @@ public class SuperCharge extends Action {
 		}else{
 			if(charge_count <=2 ){
 				GetComponent.<AudioSource>().PlayOneShot(soundEffectTwo, 0.5f);
+				battleMessage = actor.entity_name+" charges up their SUPER ATTACK.\n";
 
 			}else{
 				executed = true;
 
-				var damage = parseInt(target.health * .25);
+				var damage = parseInt(target.health * .25) + 25;
 				target.takeDamage(damage);
 
 				battleMessage = "HOLY COWSOX!!  KABLOOMERS!  WOW!\n";

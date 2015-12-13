@@ -2,8 +2,6 @@
 
 public var soundEffect : AudioClip;
 
-//var onEnemyAnimation : GameObject;
-
 public class Recon extends Action {
 
 	function waitAwhile (){

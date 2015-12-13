@@ -2,9 +2,6 @@
 
 public var soundEffect: AudioClip;
 
-//var onEnemyAnimation : GameObject;
-//var onPlayerAnimation : GameObject;
-
 public class Fire extends Action {
 
     function waitAwhile() {

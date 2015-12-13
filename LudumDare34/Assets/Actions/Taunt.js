@@ -2,8 +2,6 @@
 
 public var soundEffect : AudioClip;
 
-//var onPlayerAnimation : GameObject;
-
 public class Taunt extends Action {
 	function waitAwhile (){
 		
