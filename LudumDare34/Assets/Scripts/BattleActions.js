@@ -23,13 +23,18 @@ public var recon : Recon;
 public var randomBuff : RandomBuff;
 public var randomDebuff : RandomDebuff;
 
-public var fuck:String;
+//Amount to randomize stats
+public var variation_percent : float = 0.1f;
+
 //public class BattleActions extends MonoBehaviour {
 
 //public var actions : BattleActions = new Array();
 
 function Awake(){
 	BattleActions = new Action[16];
+
+	hero=GetComponent(Hero);
+	enemy=GetComponent(Enemy);
 
 	kungfu=GetComponent(Kungfu);
 	karate=GetComponent(Karate);
@@ -51,11 +56,25 @@ function Awake(){
 }
 function Start(){
 
-	hero.entity_name='Paul';
-	enemy.entity_name='Bart';
-	enemy.kungfu=-1;
+	var hero_names = ["Paul", "Erik", "Seth"];
+	var enemy_names = ["Lord Plop", "Dread Whatsit", "Sven the Vile", "Bart"];
 
-
+	//Randomize the hero and enemy
+	hero.entity_name = hero_names[Random.Range(0, hero_names.Length)];
+	enemy.entity_name = enemy_names[Random.Range(0, enemy_names.Length)];;
+	enemy.earth = Random.Range(-1, 2);
+	enemy.ice = Random.Range(-1, 2);
+	enemy.fire = Random.Range(-1, 2);
+	enemy.lightning = Random.Range(-1, 2);
+	enemy.karate = Random.Range(-1, 2);
+	enemy.kungfu = Random.Range(-1, 2);
+	enemy.max_health = Random.Range(Mathf.Round(enemy.max_health * (1 - variation_percent)),
+									Mathf.Round(enemy.max_health * (1 + variation_percent)));
+	enemy.health = enemy.max_health;
+	enemy.attack = Random.Range(Mathf.Round(enemy.attack * (1 - variation_percent)),
+								Mathf.Round(enemy.attack * (1 + variation_percent)));
+	enemy.defense = Random.Range(Mathf.Round(enemy.defense * (1 - variation_percent)),
+								 Mathf.Round(enemy.defense * (1 + variation_percent)));
 
 	BattleActions[0] = kungfu;
 	BattleActions[1] = karate;
@@ -74,11 +93,30 @@ function Start(){
 	BattleActions[14] = randomBuff;
 	BattleActions[15] = randomDebuff;
 
-    Debug.Log(BattleActions[0]);
-    Debug.Log(BattleActions[0].strength);
+	RandomizeArray(BattleActions);
 
 
+
+    //BattleActions[0].action(hero,enemy);
     //BattleActions[11].action(hero,enemy);
-    //BattleActions[11].action(hero,enemy);
 
+}
+
+function DoAction(slot : int, target_enemy : boolean) {
+	if(target_enemy) {
+		BattleActions[slot].action(hero, enemy);
+	}
+	else {
+		BattleActions[slot].action(enemy, hero);
+	}
+}
+
+static function RandomizeArray(arr : Object[])
+{
+    for (var i = arr.Length - 1; i > 0; i--) {
+        var r = Random.Range(0,i);
+        var tmp = arr[i];
+        arr[i] = arr[r];
+        arr[r] = tmp;
+    }
 }
