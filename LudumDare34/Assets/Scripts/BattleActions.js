@@ -1,12 +1,14 @@
 ﻿#pragma strict
-
+import UnityEngine.UI;
 
 public var hero : Hero;
 public var enemy : Enemy;
 
 public var BattleActions : Action[];
-
 public var EnemyActions : Action[];
+
+public var Action_Textbars : Text[];
+public var Action_Panels : Image[];
 
 public var kungfu : Kungfu; 
 public var karate : Karate; 
@@ -111,6 +113,8 @@ function Start(){
 
 function HeroAction(slot : int) {
 	BattleActions[slot].action(hero, enemy);
+	Action_Textbars[slot].text = "revealed";
+	Action_Panels[slot].color = Color(0,1,0,1);
 }
 
 function EnemyAction() {
