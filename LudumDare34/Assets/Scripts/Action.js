@@ -1,7 +1,9 @@
 ﻿#pragma strict
+import UnityEngine.UI;
 
 public class Action extends MonoBehaviour{
 	public var strength : int;
+	public var dialogue_box : Text;
 
 	public function action(actor : Entity, target:Entity){};
 

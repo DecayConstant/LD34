@@ -6,6 +6,8 @@ public var enemy : Enemy;
 
 public var BattleActions : Action[];
 
+public var EnemyActions : Action[];
+
 public var kungfu : Kungfu; 
 public var karate : Karate; 
 public var taunt : Taunt;
@@ -32,6 +34,7 @@ public var variation_percent : float = 0.1f;
 
 function Awake(){
 	BattleActions = new Action[16];
+	EnemyActions = new Action[9];
 
 	hero=GetComponent(Hero);
 	enemy=GetComponent(Enemy);
@@ -95,20 +98,24 @@ function Start(){
 
 	RandomizeArray(BattleActions);
 
-
-
-    //BattleActions[0].action(hero,enemy);
-    //BattleActions[11].action(hero,enemy);
-
+	EnemyActions[0] = kungfu;
+	EnemyActions[1] = karate;
+	EnemyActions[2] = ice;
+	EnemyActions[3] = fire;
+	EnemyActions[4] = earth;
+	EnemyActions[5] = lightning;
+	EnemyActions[6] = poison;
+	EnemyActions[7] = randomBuff;
+	EnemyActions[8] = randomDebuff;
 }
 
-function DoAction(slot : int, target_enemy : boolean) {
-	if(target_enemy) {
-		BattleActions[slot].action(hero, enemy);
-	}
-	else {
-		BattleActions[slot].action(enemy, hero);
-	}
+function HeroAction(slot : int) {
+	BattleActions[slot].action(hero, enemy);
+}
+
+function EnemyAction() {
+	//For now, just do a random action to hero
+	EnemyActions[Random.Range(0, EnemyActions.Length)].action(enemy,hero);
 }
 
 static function RandomizeArray(arr : Object[])

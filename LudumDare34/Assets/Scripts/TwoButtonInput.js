@@ -1,9 +1,14 @@
 ﻿#pragma strict
+import UnityEngine.UI;
 
 public var accept_input : boolean = false;
 public var current_input : String = "";
 public var timer_script : Timer;
 public var battleactions_script : BattleActions;
+public var hero : Hero;
+public var enemy : Enemy;
+public var hero_hp_slider : Slider;
+public var enemy_hp_slider : Slider;
 
 public var input_slot1 : Text;
 public var input_slot2 : Text;
@@ -13,17 +18,31 @@ public var input_slot4 : Text;
 function Awake() {
 	timer_script = GetComponent(Timer);
 	battleactions_script = GetComponent(BattleActions);
+	hero=GetComponent(Hero);
+	enemy=GetComponent(Enemy);
 }
 
 
 function Update () {
+
+
 	if(current_input.Length == 4) {
 			accept_input = false;
-
-			battleactions_script.DoAction(MapInputString(current_input), true);
-			Debug.Log(current_input);
-			current_input = "";
 			timer_script.currently_timing = false;
+
+			battleactions_script.HeroAction(MapInputString(current_input));
+			battleactions_script.EnemyAction();
+			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
+			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
+
+			//Clear out the round's input
+			input_slot1.text = "";
+			input_slot2.text = "";
+			input_slot3.text = "";
+			input_slot4.text = "";
+			current_input = "";
+
+
 			timer_script.ready_timer = true;
 	}
 	if(accept_input) {
