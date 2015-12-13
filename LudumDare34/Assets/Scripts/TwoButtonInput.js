@@ -13,20 +13,47 @@ public var enemy : Enemy;
 public var hero_hp_slider : Slider;
 public var enemy_hp_slider : Slider;
 
-public var input_slot1 : Text;
-public var input_slot2 : Text;
-public var input_slot3 : Text;
-public var input_slot4 : Text;
+public var input_slots : Text[];
+public var bonus_panels : Image[];
+
+public var timer_bonus : float = 0.0;
+public var timer_bonus_chance : float = 0.2;
+public var timer_bonus_text : Text;
+public var ready_timer_bonus : boolean = true;
+private var possible_buttons = new Array('A', 'D');
+var soup : float;
+//public var input_slot1 : Text;
+//public var input_slot2 : Text;
+//public var input_slot3 : Text;
+//public var input_slot4 : Text;
+//
+//public var bonus_panel1 : Image;
+//public var bonus_panel2 : Image;
+//public var bonus_panel3 : Image;
+//public var bonus_panel4 : Image;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
 	battleactions_script = GetComponent(BattleActions);
 	hero=GetComponent(Hero);
 	enemy=GetComponent(Enemy);
+	timer_bonus_text.text = "";
 }
 
 
 function Update () {
+	if(ready_timer_bonus) {
+		ready_timer_bonus = false;
+		for(var i : int = 0; i < input_slots.Length; i++) {
+			soup = Random.value;
+			Debug.Log(soup);
+			Debug.Log(timer_bonus_chance);
+			if(soup < timer_bonus_chance) {
+				input_slots[i].text = possible_buttons[Random.Range(0, possible_buttons.length)];
+				bonus_panels[i].color = Color(0.2,0.9,0.2,0.7);
+			}
+		}
+	}
 
 	if(current_input.Length == 4) {
 		accept_input = false;
@@ -56,10 +83,11 @@ function Update () {
 
 		if(!hero_turn && !enemy_turn && battle_timer <= 0) {
 			//Clear out the round's input
-			input_slot1.text = "";
-			input_slot2.text = "";
-			input_slot3.text = "";
-			input_slot4.text = "";
+			for(var j : int = 0; j < input_slots.Length; j++) {
+				input_slots[j].text = "";
+				bonus_panels[j].color = Color(0.6,0.6,0.6,0.6);
+			}
+			ready_timer_bonus = true;
 			current_input = "";
 			hero_turn = true;
 			battle_timer = 2.0;
@@ -75,16 +103,16 @@ function Update () {
 		}
 	}
 	if(current_input.Length == 1) {
-		input_slot1.text = current_input[0].ToString();
+		input_slots[0].text = current_input[0].ToString();
 	}
 	if(current_input.Length == 2) {
-		input_slot2.text = current_input[1].ToString();
+		input_slots[1].text = current_input[1].ToString();
 	}
 	if(current_input.Length == 3) {
-		input_slot3.text = current_input[2].ToString();
+		input_slots[2].text = current_input[2].ToString();
 	}
 	if(current_input.Length == 4) {
-		input_slot4.text = current_input[3].ToString();
+		input_slots[3].text = current_input[3].ToString();
 	}
 }
 
