@@ -29,7 +29,7 @@ function Update () {
 	}
 	if(currently_timing) {
 		if(timer <= 0) {
-			gameover_script.GameOver();
+			gameover_script.GameOver("Game Over!\nPress any button to continue.");
 		}
 		else {
 			timer -= Time.deltaTime;
