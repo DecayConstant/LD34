@@ -41,6 +41,7 @@ public class SuperCharge extends Action {
     };
 
     public function SuperCharge(){
+    	action_name= "Super Charge";
     };
 
 };

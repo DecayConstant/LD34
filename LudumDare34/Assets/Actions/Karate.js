@@ -16,37 +16,34 @@ public class Karate extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
-        var damage : int = strength;
+        var damage = calculateDamage(actor,target,actor.karate,target.karate);
+        target.takeDamage(damage);
+       
+        if(target.playerType == 2){ 
+    		onEnemyAnimation.SetActive(true);
+    		Debug.Log("target is enemy");
+    	} else if (target.playerType == 1) {
+    		onPlayerAnimation.SetActive(true);
+    		Debug.Log("target is player");
+    	} else if (target.playerType == 0){
+    		Debug.Log("is zero");
+    	}
 
-         if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
+        var effectivenessDesc = getEffectiveness(actor.karate,target.karate);
 
-        	}
+        var battleMessage = getBattleMessage(damage,actor);
+        battleMessage = battleMessage+effectivenessDesc;
 
-        if(target.karate == 1){
-            damage = parseInt(damage*.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is strong against your karate. You deal '+damage+' damage.');
-        }else if(target.karate == -1){
-            damage = parseInt(damage*1.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is weak against your karate. You deal '+damage+' damage.');
-        }else{
-            target.takeDamage(damage);
-            Debug.Log('You deal '+damage+' damage.');
-        }
+        Debug.Log(battleMessage);
+        dialogue_box.text = battleMessage+'\n' + dialogue_box.text;
 
-                StartCoroutine(waitAwhile());
+        StartCoroutine(waitAwhile());
 
     };
 
     public function Karate(){
+    	generic_name='karate';
+    	action_name= "Karate";
     	strength=50;
     };
 

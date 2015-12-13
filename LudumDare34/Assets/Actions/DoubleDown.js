@@ -23,6 +23,7 @@ public class DoubleDown extends Action {
     };
 
     public function DoubleDown(){
+    	action_name= "Stupid Maneuver";
     };
 
 };
