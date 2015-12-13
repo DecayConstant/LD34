@@ -5,7 +5,7 @@ var gameover_script : GameOver;
 var input_script : TwoButtonInput;
 
 public var timer : float = 10;
-public var ready_timer : boolean = true;
+public var ready_timer : boolean = false;
 public var currently_timing : boolean = false;
 public var timer_string : UI.Text;
 public var timer_slider : Slider;
@@ -45,5 +45,9 @@ function Update () {
 }
 
 function ReadyForInput() {
+	ready_timer = true;
+}
+
+function StartGame() {
 	ready_timer = true;
 }
