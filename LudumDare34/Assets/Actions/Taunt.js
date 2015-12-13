@@ -32,7 +32,7 @@ public class Taunt extends Action {
     }
 
     public function Taunt(){
-
+    	action_name="Taunt";
     };
 
 }

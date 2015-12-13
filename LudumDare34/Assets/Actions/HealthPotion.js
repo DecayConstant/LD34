@@ -44,6 +44,7 @@ public class HealthPotion extends Action {
 
     public function HealthPotion(){
     	strength=150;
+    	action_name="Health Potion";
     };
 
 };

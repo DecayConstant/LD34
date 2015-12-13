@@ -66,6 +66,7 @@ public class Recon extends Action {
     };
 
     public function Recon(){
+    	action_name= "Reconnaissance";
     };
 
 };

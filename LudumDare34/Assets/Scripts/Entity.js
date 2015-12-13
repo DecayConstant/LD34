@@ -29,5 +29,6 @@ public class Entity extends MonoBehaviour {
 
     public function takeDamage(damage:int){
     	health -= damage;
-    }
+    };
+   
 }

@@ -109,6 +109,8 @@ function Start(){
 	EnemyActions[6] = poison;
 	EnemyActions[7] = randomBuff;
 	EnemyActions[8] = randomDebuff;
+
+	ice.action(hero,enemy);
 }
 
 function HeroAction(slot : int) {

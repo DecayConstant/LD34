@@ -16,38 +16,35 @@ public class Kungfu extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
-        var damage : int = strength;
+        var damage = calculateDamage(actor,target,actor.kungfu,target.kungfu);
+        target.takeDamage(damage);
 
-         if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
+        if(target.playerType == 2){ 
+    		onEnemyAnimation.SetActive(true);
+    		Debug.Log("target is enemy");
+    	}else if (target.playerType == 1) {
+    		onPlayerAnimation.SetActive(true);
+    		Debug.Log("target is player");
+    	}else if (target.playerType == 0){
+    		Debug.Log("is zero");
+    	}
 
-        	}
+        var effectivenessDesc = getEffectiveness(actor.kungfu,target.kungfu);
 
-        if(target.kungfu == 1){
-            damage = parseInt(damage*.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is strong against your kungfu. You deal '+damage+' damage.');
-        }else if(target.kungfu == -1){
-            damage = parseInt(damage*1.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is weak against your kungfu. You deal '+damage+' damage.');
-        }else{
-            target.takeDamage(damage);
-            Debug.Log('You deal '+damage+' damage.');
-        }
-                StartCoroutine(waitAwhile());
+        var battleMessage = getBattleMessage(damage,actor);
+        battleMessage = battleMessage+effectivenessDesc;
+
+        Debug.Log(battleMessage);
+        dialogue_box.text = battleMessage+'\n' + dialogue_box.text;
+
+        StartCoroutine(waitAwhile());
 
     };
 
     public function Kungfu(){
+    	generic_name='kungfu';
+    	action_name="Kung Fu";
     	strength=50;
-    	Debug.Log('WTF: '+strength);
     };
 
 };

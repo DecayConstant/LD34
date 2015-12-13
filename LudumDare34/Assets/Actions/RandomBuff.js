@@ -18,15 +18,14 @@ public class RandomBuff extends Action {
 	public function action(actor : Entity, target:Entity){
 
 	 if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
-
-        	}
+    		onEnemyAnimation.SetActive(true);
+    		Debug.Log("target is enemy");
+    	}else if (target.playerType == 1) {
+    		onPlayerAnimation.SetActive(true);
+    		Debug.Log("target is player");
+    	}else if (target.playerType == 0){
+    		Debug.Log("is zero");
+    	}
 
 		var debuff_num = Random.Range(0,3);
 		var buff :String;
@@ -45,12 +44,13 @@ public class RandomBuff extends Action {
 			actor.lightning = 1;
 		} 
 
-        Debug.Log("You foucus your hocus pocus and feel the majecteic powers of "+buff+" surround you.");
+        Debug.Log(actor.entity_name+" foucuses their hocus pocus and feels the majestic powers of "+buff+" surround them.");
         StartCoroutine(waitAwhile());
+
     };
 
     public function RandomBuff(){
-    	
+    	action_name= "Random Buff";
     };
 
 };

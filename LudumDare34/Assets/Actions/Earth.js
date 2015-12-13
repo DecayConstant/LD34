@@ -1,51 +1,50 @@
-﻿#pragma strict
+﻿# pragma strict
 
-public var soundEffect : AudioClip;
+public var soundEffect: AudioClip;
 
-var onEnemyAnimation : GameObject;
-var onPlayerAnimation : GameObject;
+var onEnemyAnimation: GameObject;
+var onPlayerAnimation: GameObject;
 
 public class Earth extends Action {
 
-	function waitAwhile (){
-		
-		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
-		yield WaitForSeconds (1.0);
-		onEnemyAnimation.SetActive(false);
+    function waitAwhile() {
+
+        GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5 f);
+        yield WaitForSeconds(1.0);
+        onEnemyAnimation.SetActive(false);
         onPlayerAnimation.SetActive(false);
-	}
+    }
 
-	public function action(actor : Entity, target:Entity){
-        var damage = strength;
-
-        if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
-
-        	}
-
-        if(target.earth == 1){
-            damage = parseInt(damage*.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is strong against earth. You deal '+damage+' damage.');
-        }else if(target.earth == -1){
-            damage = parseInt(damage*1.5);
-            target.takeDamage(damage);
-            Debug.Log(target.name+' is weak against earth. You deal '+damage+' damage.');
-        }else{
-            target.takeDamage(damage);
-            Debug.Log('You deal '+damage+' Earth damage.');
+    public function action(actor: Entity, target: Entity) {
+        if (target.playerType == 2){
+            onEnemyAnimation.SetActive(true);
+            Debug.Log("target is enemy");
+        } else if (target.playerType == 1) {
+            onPlayerAnimation.SetActive(true);
+            Debug.Log("target is player");
+        } else if (target.playerType == 0) {
+            Debug.Log("is zero");
         }
+
+        var damage = calculateDamage(actor, target, actor.earth, target.earth);
+        target.takeDamage(damage);
+
+        var effectivenessDesc = getEffectiveness(actor.earth, target.earth);
+
+        var battleMessage = getBattleMessage(damage, actor);
+        battleMessage = battleMessage + effectivenessDesc;
+
+        Debug.Log(battleMessage);
+        dialogue_box.text = battleMessage + '\n' + dialogue_box.text;
+
         StartCoroutine(waitAwhile());
+
     };
 
-    public function Earth(){
-    	strength=50;
+    public function Earth() {
+        generic_name = 'earth';
+        action_name = "Quakeball 9000";
+        strength = 50;
     };
 
 };

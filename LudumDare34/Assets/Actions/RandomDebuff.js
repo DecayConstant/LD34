@@ -18,15 +18,14 @@ public class RandomDebuff extends Action {
 	public function action(actor : Entity, target:Entity){
 
 	  if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
-
-        	}
+    		onEnemyAnimation.SetActive(true);
+    		Debug.Log("target is enemy");
+    	}else if (target.playerType == 1) {
+    		onPlayerAnimation.SetActive(true);
+    		Debug.Log("target is player");
+    	}else if (target.playerType == 0){
+    		Debug.Log("is zero");
+    	}
 
 		var debuff_num = Random.Range(0,3);
 		var weakness :String;
@@ -45,14 +44,14 @@ public class RandomDebuff extends Action {
 			target.lightning = -1;
 		} 
 
-        Debug.Log("You pull some voodoo hocus pocus and make"+target.entity_name+" weak to "+weakness+" attacks.");
+        Debug.Log(actor.entity_name+" pulls some voodoo hocus pocus and makes "+target.entity_name+" weak to "+weakness+" attacks.");
         StartCoroutine(waitAwhile());
 
     };
 
 
     public function RandomDebuff(){
-    	
+    	action_name= "Random Debuf";
     };
 
 };

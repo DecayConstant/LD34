@@ -16,7 +16,7 @@ public class Reequip extends Action {
     };
 
     public function Reequip(){
-    	
+    	action_name= "Reequip";
     };
 
 };
