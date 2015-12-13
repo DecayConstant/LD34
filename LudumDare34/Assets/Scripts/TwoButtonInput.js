@@ -16,11 +16,13 @@ public var enemy_hp_slider : Slider;
 public var input_slots : Text[];
 public var bonus_panels : Image[];
 
-public var timer_bonus : float = 0.0;
-public var timer_bonus_chance : float = 0.2;
+public var timer_bonus_total : float = 0.0;
+public var timer_bonus_amount : float = 0.5;
+public var timer_bonus_chance : float = 0.2;  //percent
 public var timer_bonus_text : Text;
 public var ready_timer_bonus : boolean = true;
 private var possible_buttons = new Array('A', 'D');
+private var new_input : boolean = false;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
@@ -48,6 +50,7 @@ function Update () {
 
 	if(current_input.Length == 4) {
 		accept_input = false;
+		new_input = false;
 		timer_script.currently_timing = false;
 
 		battle_timer -= Time.deltaTime;
@@ -80,6 +83,8 @@ function Update () {
 			}
 			ready_timer_bonus = true;
 			current_input = "";
+			timer_bonus_text.text = "";
+			timer_bonus_total = 0.0;
 			hero_turn = true;
 			battle_timer = 2.0;
 			timer_script.ready_timer = true;
@@ -88,21 +93,47 @@ function Update () {
 	if(accept_input) {
 		if(Input.GetButtonDown("ButtonA")) {
 			current_input += "A";
+			new_input = true;
 		}
 		else if(Input.GetButtonDown("ButtonB")) {
 			current_input += "D";
+			new_input = true;
 		}
 	}
-	if(current_input.Length == 1) {
+	if(current_input.Length == 1 && new_input) {
+		new_input = false;
+		if(input_slots[0].text == current_input[0].ToString()) {
+			timer_bonus_total += timer_bonus_amount;
+			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
+			timer_script.AddTime(timer_bonus_amount);
+		}
 		input_slots[0].text = current_input[0].ToString();
 	}
-	if(current_input.Length == 2) {
+	if(current_input.Length == 2 && new_input) {
+		new_input = false;
+		if(input_slots[1].text == current_input[1].ToString()) {
+			timer_bonus_total += timer_bonus_amount;
+			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
+			timer_script.AddTime(timer_bonus_amount);
+		}
 		input_slots[1].text = current_input[1].ToString();
 	}
-	if(current_input.Length == 3) {
+	if(current_input.Length == 3 && new_input) {
+		new_input = false;
+		if(input_slots[2].text == current_input[2].ToString()) {
+			timer_bonus_total += timer_bonus_amount;
+			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
+			timer_script.AddTime(timer_bonus_amount);
+		}
 		input_slots[2].text = current_input[2].ToString();
 	}
-	if(current_input.Length == 4) {
+	if(current_input.Length == 4 && new_input) {
+		new_input = false;
+		if(input_slots[3].text == current_input[3].ToString()) {
+			timer_bonus_total += timer_bonus_amount;
+			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
+			timer_script.AddTime(timer_bonus_amount);
+		}
 		input_slots[3].text = current_input[3].ToString();
 	}
 }
