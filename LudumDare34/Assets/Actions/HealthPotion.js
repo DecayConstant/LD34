@@ -17,7 +17,7 @@ public class HealthPotion extends Action {
 		
 		if(actor.playerType == 2){ 
 	    	Debug.Log("target is enemy");
-	    } else if (target.playerType == 1) {
+	    } else if (actor.playerType == 1) {
 	    	onPlayerAnimation.SetActive(true);
 	    	Debug.Log("target is player");
 	    } else if (actor.playerType == 0){
