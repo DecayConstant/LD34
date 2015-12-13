@@ -115,7 +115,7 @@ function Start(){
 
 function HeroAction(slot : int) {
 	BattleActions[slot].action(hero, enemy);
-	Action_Textbars[slot].text = "revealed";
+	Action_Textbars[slot].text = BattleActions[slot].action_name;
 	Action_Panels[slot].color = Color(0,1,0,1);
 }
 

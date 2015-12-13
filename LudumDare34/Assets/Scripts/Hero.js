@@ -99,7 +99,7 @@ public class Hero extends Entity {
 		if(reconned == true){
 			enemyStatPanel.SetActive(true);
 		}else {
-			enemyStatPanel.SetActive(false);
+			//enemyStatPanel.SetActive(false);
 		}
 	};
 
