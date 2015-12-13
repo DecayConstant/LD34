@@ -14,31 +14,36 @@ public class HealthPotion extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
+		
+		if(actor.playerType == 2){ 
+	    	Debug.Log("target is enemy");
+	    } else if (target.playerType == 1) {
+	    	onPlayerAnimation.SetActive(true);
+	    	Debug.Log("target is player");
+	    } else if (actor.playerType == 0){
+	    	Debug.Log("is zero");
+		}
 
-	 if(actor.playerType == 2){ 
-        		Debug.Log("target is enemy");
-        	}else if (target.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (actor.playerType == 0){
-        		        		Debug.Log("is zero");
+		var battleMessage:String;
 
-        	}
+	    if(actor.health_potions > 0){
+	        actor.health_potions--;
+	    	battleMessage = "You swig a health potion.\n";
 
-          if(actor.health_potions > 0){
-                actor.health_potions--;
-                Debug.Log("You swig a health potion.");
+	    	//Make sure we don't put their health over their max_health.
+	        if(actor.health + strength > actor.max_health){
+	        	actor.health = actor.max_health;
+	        } else {
+	        	actor.health = actor.health + strength;
+	        }
 
-                if(actor.health + strength > actor.max_health){
-                	actor.health = actor.max_health;
-                } else {
-                	actor.health = actor.health + strength;
-                }
+	    }else{
+	        battleMessage = "You'd like to swig a health potion, but you are out!\n";
+	    }
 
-            }else{
-                Debug.Log("You'd like to swig a health potion, but you are out!");
-            }
-       StartCoroutine(waitAwhile());
+     	dialogue_box.text = battleMessage + dialogue_box.text;
+
+		StartCoroutine(waitAwhile());
 
     };
 

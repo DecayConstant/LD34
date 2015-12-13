@@ -28,7 +28,8 @@ public class Poison extends Action {
 
           target.poisoned = 3;
     
-          Debug.Log(actor.entity_name+" poisons "+target.name+".");
+          var battleMessage:String = actor.entity_name+" poisons "+target.name+".\n";
+          dialogue_box.text = battleMessage+dialogue_box.text;
 
           StartCoroutine(waitAwhile());
 

@@ -6,9 +6,13 @@ public class Reequip extends Action {
 		var newAttack = Random.Range(75,150);
 		var newDefense = Random.Range(75,150);
 
-        Debug.Log("You pull some stuff out of your travel bag and try it on.");
-        Debug.Log("Attack: "+actor.attack+" => "+newAttack);
-        Debug.Log("Defense: "+actor.defense+" => "+newDefense);
+		var battleMessage : String;
+
+        battleMessage = "You pull some stuff out of your travel bag and try it on.\n";
+        battleMessage += "Attack: "+actor.attack+" => "+newAttack+'\n';
+        battleMessage += "Defense: "+actor.defense+" => "+newDefense+'\n';
+
+        dialogue_box.text = battleMessage+dialogue_box.text;
 
         actor.attack = newAttack;
         actor.defense = newDefense;

@@ -16,53 +16,55 @@ public class Recon extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-	if(target.playerType == 2){ 
-        		onEnemyAnimation.SetActive(true);
-        		Debug.Log("target is enemy");
-        	
-        	}else if (target.playerType == 0){
-        		        		Debug.Log("is zero");
+		if(target.playerType == 2){ 
+    		onEnemyAnimation.SetActive(true);
+    		Debug.Log("target is enemy");
+    	} else if (target.playerType == 0){
+    		Debug.Log("is zero");
 
-        	}
+    	}
 
-         if(target.kungfu == -1){
-         	Debug.Log(target.entity_name+" is weak against kungfu.");
-         }else if(target.kungfu == 1){
-         	Debug.Log(target.entity_name+" is strong against kungfu.");
-         }
+    	var battleMessage : String;
 
-         if(target.karate == -1){
-         	Debug.Log(target.entity_name+" is weak against karate.");
-         }else if(target.karate == 1){
-         	Debug.Log(target.entity_name+" is strong against karate.");
-         }
+ 		if(target.kungfu == -1){
+			battleMessage = target.entity_name+" is weak against kungfu.\n";
+		}else if(target.kungfu == 1){
+			battleMessage = target.entity_name+" is strong against kungfu.\n";
+		}
 
-         if(target.ice == -1){
-         	Debug.Log(target.entity_name+" is weak against ice.");
-         }else if(target.ice == 1){
-         	Debug.Log(target.entity_name+" is strong against ice.");
-         }
+		if(target.karate == -1){
+		 	battleMessage = target.entity_name+" is weak against karate.\n";
+		}else if(target.karate == 1){
+			battleMessage = target.entity_name+" is strong against karate.\n";
+		}
 
-         if(target.fire == -1){
-         	Debug.Log(target.entity_name+" is weak against fire.");
-         }else if(target.fire == 1){
-         	Debug.Log(target.entity_name+" is strong against fire.");
-         }
+		if(target.ice == -1){
+		 	battleMessage = target.entity_name+" is weak against ice.\n";
+		}else if(target.ice == 1){
+		 	battleMessage = target.entity_name+" is strong against ice.\n";
+		}
 
-         if(target.earth == -1){
-         	Debug.Log(target.entity_name+" is weak against earth.");
-         }else if(target.karate == 1){
-         	Debug.Log(target.entity_name+" is strong against earth.");
-         }
+		if(target.fire == -1){
+		 	battleMessage = target.entity_name+" is weak against fire.\n";
+		}else if(target.fire == 1){
+		 	battleMessage = target.entity_name+" is strong against fire.\n";
+		}
 
-         if(target.lightning == -1){
-         	Debug.Log(target.entity_name+" is weak against lightning.");
-         } else if(target.lightning == 1){
-         	Debug.Log(target.entity_name+" is strong against lightning.");
-         }
+		if(target.earth == -1){
+		 	battleMessage = target.entity_name+" is weak against earth.\n";
+		}else if(target.karate == 1){
+		 	battleMessage = target.entity_name+" is strong against earth.\n";
+		}
 
-         target.reconned = true;
-         StartCoroutine(waitAwhile());
+		if(target.lightning == -1){
+		 	battleMessage = target.entity_name+" is weak against lightning.\n";
+		} else if(target.lightning == 1){
+		 	battleMessage = target.entity_name+" is strong against lightning.\n";
+		}
+
+        target.reconned = true;
+        dialogue_box.text = battleMessage+dialogue_box.text;
+        StartCoroutine(waitAwhile());
     };
 
     public function Recon(){

@@ -23,21 +23,28 @@ public class SuperCharge extends Action {
 
 	public function action(actor : Entity, target:Entity){
 		charge_count++;
+		var battleMessage : String;
+
 		if(executed){
-			Debug.Log("You can't even bring yourself to try that again.");
+			battleMessage = "You can't even bring yourself to try that again.\n";
 		}else{
 			if(charge_count <=2 ){
 				GetComponent.<AudioSource>().PlayOneShot(soundEffectTwo, 0.5f);
 
 			}else{
 				executed = true;
-				Debug.Log("HOLY COWSOX!!  KABLOOMERS!  WOW!");
+
 				var damage = parseInt(target.health * .25);
-				Debug.Log("You do "+damage+" damege to "+target.entity_name+'.');
+				target.takeDamage(damage);
+
+				battleMessage = "HOLY COWSOX!!  KABLOOMERS!  WOW!\n";
+				battleMessage += actor.entity_name + " does "+damage+" damage to "+target.entity_name+'.\n';
 				onEnemyAnimation.SetActive(true);
 				StartCoroutine(waitAwhile());
 			}
 		}
+
+		dialogue_box.text = battleMessage+dialogue_box.text;
     };
 
     public function SuperCharge(){

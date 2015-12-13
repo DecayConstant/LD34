@@ -44,8 +44,10 @@ public class RandomDebuff extends Action {
 			target.lightning = -1;
 		} 
 
-        Debug.Log(actor.entity_name+" pulls some voodoo hocus pocus and makes "+target.entity_name+" weak to "+weakness+" attacks.");
+		var battleMessage:String;
+        battleMessage = actor.entity_name+" pulls some voodoo hocus pocus and makes "+target.entity_name+" weak to "+weakness+" attacks.\n";
         StartCoroutine(waitAwhile());
+        dialogue_box.text = battleMessage+dialogue_box.text;
 
     };
 

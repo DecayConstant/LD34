@@ -14,20 +14,25 @@ public class Taunt extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-	 if (actor.playerType == 1) {
-        		onPlayerAnimation.SetActive(true);
-        		Debug.Log("target is player");
-        	}else if (actor.playerType == 0){
-        		        		Debug.Log("is zero");
+		if (actor.playerType == 1) {
+    		onPlayerAnimation.SetActive(true);
+    		Debug.Log("target is player");
+    	} else if (actor.playerType == 0){
+    		Debug.Log("is zero");
+    	}
 
-        	}
-     	Debug.Log("You make fun of " + target.name + '.');
+    	var battleMessage:String;
+
+     	battleMessage = "You make fun of " + target.name + '.\n';
+     	dialogue_box.text = battleMessage + dialogue_box.text;
+
         target.taunt_count = target.taunt_count + 1;
 
         if (target.taunt_count >= 10) {
             //Do they win?
         }
-                StartCoroutine(waitAwhile());
+
+        StartCoroutine(waitAwhile());
 
     }
 

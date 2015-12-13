@@ -3,9 +3,11 @@
 public class Guard extends Action {
 
 	public function action(actor : Entity, target:Entity){
+        actor.guarded++;
 
-         Debug.Log("You put up your dukes and gaurd against the next attack.");
-         actor.guarded = 1;
+        var battleMessage:String;
+     	battleMessage = "You put up your dukes and gaurd against the next attack.\n";
+     	dialogue_box.text = battleMessage + dialogue_box.text;
     };
 
     public function Guard(){

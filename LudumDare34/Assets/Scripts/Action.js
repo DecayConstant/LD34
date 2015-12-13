@@ -32,6 +32,12 @@ public class Action extends MonoBehaviour{
         	damage = parseInt(damage * buffMultiplier);
         }
 
+        //If the target has guards saved up, apply it to this attack, and reduce guard counter.
+    	if(target.guarded > 0) {
+    		damage = parseInt(damage * .33);
+    		target.guarded--;
+    	}
+
         return damage;
     };
 

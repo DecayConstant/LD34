@@ -44,7 +44,9 @@ public class RandomBuff extends Action {
 			actor.lightning = 1;
 		} 
 
-        Debug.Log(actor.entity_name+" foucuses their hocus pocus and feels the majestic powers of "+buff+" surround them.");
+		var battleMessage:String;
+        battleMessage = actor.entity_name+" foucuses their hocus pocus and feels the majestic powers of "+buff+" surround them.\n";
+        dialogue_box.text = battleMessage+dialogue_box.text;
         StartCoroutine(waitAwhile());
 
     };
