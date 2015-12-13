@@ -98,8 +98,6 @@ public class Hero extends Entity {
 		//shows the enemy status panel after recon is used.
 		if(reconned == true){
 			enemyStatPanel.SetActive(true);
-		}else {
-			enemyStatPanel.SetActive(false);
 		}
 	};
 
