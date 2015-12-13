@@ -4,6 +4,9 @@ import UnityEngine.UI;
 public var hero : Hero;
 public var enemy : Enemy;
 
+public var hero_name_text : Text;
+public var enemy_name_text : Text;
+
 public var BattleActions : Action[];
 public var EnemyActions : Action[];
 
@@ -66,7 +69,10 @@ function Start(){
 
 	//Randomize the hero and enemy
 	hero.entity_name = hero_names[Random.Range(0, hero_names.Length)];
-	enemy.entity_name = enemy_names[Random.Range(0, enemy_names.Length)];;
+	hero_name_text.text = hero.entity_name;
+	enemy.entity_name = enemy_names[Random.Range(0, enemy_names.Length)];
+	enemy_name_text.text = enemy.entity_name;
+
 	enemy.earth = Random.Range(-1, 2);
 	enemy.ice = Random.Range(-1, 2);
 	enemy.fire = Random.Range(-1, 2);
