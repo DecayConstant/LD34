@@ -3,6 +3,9 @@ import UnityEngine.UI;
 
 public var accept_input : boolean = false;
 public var current_input : String = "";
+public var battle_timer : float = 2.0;
+public var hero_turn : boolean = true;
+public var enemy_turn : boolean = false;
 public var timer_script : Timer;
 public var battleactions_script : BattleActions;
 public var hero : Hero;
@@ -25,25 +28,41 @@ function Awake() {
 
 function Update () {
 
-
 	if(current_input.Length == 4) {
-			accept_input = false;
-			timer_script.currently_timing = false;
+		accept_input = false;
+		timer_script.currently_timing = false;
 
+		battle_timer -= Time.deltaTime;
+
+		if(hero_turn) {
 			battleactions_script.HeroAction(MapInputString(current_input));
-			battleactions_script.EnemyAction();
+			hero.UpdateStatus();
 			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
 			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
+			hero_turn = false;
+			enemy_turn = true;
+		}
 
+		if(enemy_turn && battle_timer <= 0) {
+			battle_timer = 2.0;
+			battleactions_script.EnemyAction();
+			enemy.UpdateStatus();
+			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
+			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
+			enemy_turn = false;
+		}
+
+		if(!hero_turn && !enemy_turn && battle_timer <= 0) {
 			//Clear out the round's input
 			input_slot1.text = "";
 			input_slot2.text = "";
 			input_slot3.text = "";
 			input_slot4.text = "";
 			current_input = "";
-
-
+			hero_turn = true;
+			battle_timer = 2.0;
 			timer_script.ready_timer = true;
+		}
 	}
 	if(accept_input) {
 		if(Input.GetButtonDown("ButtonA")) {
