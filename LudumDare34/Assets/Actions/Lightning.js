@@ -2,9 +2,6 @@
 
 public var soundEffect : AudioClip;
 
-//var onEnemyAnimation : GameObject;
-//var onPlayerAnimation : GameObject;
-
 public class Lightning extends Action {
 
 	function waitAwhile (){

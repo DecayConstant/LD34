@@ -23,10 +23,14 @@ public class Action extends MonoBehaviour{
 
 	function prepareAnimation(target:Entity){
 		if (target.playerType == 2){
-            onEnemyAnimation.SetActive(true);
+			if(onEnemyAnimation){
+            	onEnemyAnimation.SetActive(true);
+            }
             Debug.Log("target is enemy");
         } else if (target.playerType == 1) {
-            onPlayerAnimation.SetActive(true);
+        	if(onPlayerAnimation){
+            	onPlayerAnimation.SetActive(true);
+            }
             Debug.Log("target is player");
         } else if (target.playerType == 0) {
             Debug.Log("is zero");
