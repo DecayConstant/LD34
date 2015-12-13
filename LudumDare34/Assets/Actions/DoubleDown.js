@@ -13,13 +13,17 @@ public class DoubleDown extends Action {
 
 	public function action(actor : Entity, target:Entity){
 		use_count++;
-		if(use_count >=2 ){
-			Debug.Log('YOU DORK!');
-			Debug.Log('YOU LOSE!');
-			gameover_script.GameOver("DON'T EVER DO THAT AGAIN!!!");
-		}else{
-			Debug.Log("DON'T EVER DO THAT AGAIN!!!");
+
+		var battleMessage:String;
+
+		if(use_count >=2 ) {
+			gameover_script.GameOver("WHY DID YOU DO THAT THING AGAIN?  YOU LOSE!");
+		} else {
+			battleMessage = "DON'T EVER DO THAT AGAIN!!!\n";
 		}
+
+
+		dialogue_box.text = battleMessage+dialogue_box.text;
     };
 
     public function DoubleDown(){
