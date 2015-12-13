@@ -14,20 +14,9 @@ public class HealthPotion extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
-<<<<<<< HEAD
-		
-		if(actor.playerType == 2){ 
-	    	Debug.Log("target is enemy");
-	    } else if (actor.playerType == 1) {
-	    	onPlayerAnimation.SetActive(true);
-	    	Debug.Log("target is player");
-	    } else if (actor.playerType == 0){
-	    	Debug.Log("is zero");
-		}
-=======
+
 
 		prepareAnimation(actor);
->>>>>>> 6810fa545ad451814d2cdcfe1c227345b78b870d
 
 		var battleMessage:String;
 
