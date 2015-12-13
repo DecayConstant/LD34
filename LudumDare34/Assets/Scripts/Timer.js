@@ -24,7 +24,7 @@ function Awake() {
 function Update () {
 
 	if(ready_timer) {
-		if(input_timer >= 0) {
+		if(input_timer >= 0.0) {
 			input_timer -= Time.deltaTime;
 			input_string.text = input_timer.ToString("#.0");
 		}
@@ -37,7 +37,7 @@ function Update () {
 		}
 	}
 	if(currently_timing) {
-		if(timer <= 0) {
+		if(timer <= 0.0) {
 			gameover_script.GameOver("Game Over!\nYou ran out of time.  :(");
 		}
 		else {

@@ -2,8 +2,6 @@
 
 public var soundEffect : AudioClip;
 
-//var onPlayerAnimation : GameObject;
-
 public class HealthPotion extends Action {
 
 	function waitAwhile (){
@@ -14,7 +12,6 @@ public class HealthPotion extends Action {
 	}
 
 	public function action(actor : Entity, target:Entity){
-
 
 		prepareAnimation(actor);
 

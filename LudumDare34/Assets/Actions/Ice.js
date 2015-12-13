@@ -3,8 +3,6 @@ import UnityEngine.UI;
 
 public var soundEffect: AudioClip;
 
-
-
 public class Ice extends Action {
 
     function waitAwhile() {

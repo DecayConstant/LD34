@@ -3,8 +3,8 @@
 public class Reequip extends Action {
 
 	public function action(actor : Entity, target:Entity){
-		var newAttack = Random.Range(75,150);
-		var newDefense = Random.Range(75,150);
+		var newAttack = Random.Range(80,150);
+		var newDefense = Random.Range(80,150);
 
 		var battleMessage : String;
 
