@@ -21,16 +21,6 @@ public var timer_bonus_chance : float = 0.2;
 public var timer_bonus_text : Text;
 public var ready_timer_bonus : boolean = true;
 private var possible_buttons = new Array('A', 'D');
-var soup : float;
-//public var input_slot1 : Text;
-//public var input_slot2 : Text;
-//public var input_slot3 : Text;
-//public var input_slot4 : Text;
-//
-//public var bonus_panel1 : Image;
-//public var bonus_panel2 : Image;
-//public var bonus_panel3 : Image;
-//public var bonus_panel4 : Image;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
@@ -38,6 +28,10 @@ function Awake() {
 	hero=GetComponent(Hero);
 	enemy=GetComponent(Enemy);
 	timer_bonus_text.text = "";
+	for(var k : int = 0; k < input_slots.Length; k++) {
+		input_slots[k].text = "";
+		bonus_panels[k].color = Color(0.6,0.6,0.6,0.6);
+	}
 }
 
 
@@ -45,10 +39,7 @@ function Update () {
 	if(ready_timer_bonus) {
 		ready_timer_bonus = false;
 		for(var i : int = 0; i < input_slots.Length; i++) {
-			soup = Random.value;
-			Debug.Log(soup);
-			Debug.Log(timer_bonus_chance);
-			if(soup < timer_bonus_chance) {
+			if(Random.value < timer_bonus_chance) {
 				input_slots[i].text = possible_buttons[Random.Range(0, possible_buttons.length)];
 				bonus_panels[i].color = Color(0.2,0.9,0.2,0.7);
 			}
