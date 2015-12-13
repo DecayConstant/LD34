@@ -3,8 +3,7 @@ import UnityEngine.UI;
 
 public var soundEffect: AudioClip;
 
-var onEnemyAnimation: GameObject;
-var onPlayerAnimation: GameObject;
+
 
 public class Ice extends Action {
 
@@ -18,19 +17,11 @@ public class Ice extends Action {
 
     public function action(actor: Entity, target: Entity) {
 
+		prepareAnimation(target);	
+
         var damage = calculateDamage(actor, target, actor.ice, target.ice);
         target.takeDamage(damage);
 
-        if (target.playerType == 2){
-            onEnemyAnimation.SetActive(true);
-            Debug.Log("target is enemy");
-        } else if (target.playerType == 1) {
-            onPlayerAnimation.SetActive(true);
-            Debug.Log("target is player");
-        } else if (target.playerType == 0) {
-            Debug.Log("is zero");
-
-        }
         var effectivenessDesc = getEffectiveness(actor.ice, target.ice);
 
         var battleMessage = getBattleMessage(damage, actor);

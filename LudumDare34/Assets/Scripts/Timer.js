@@ -4,13 +4,22 @@ import UnityEngine.UI;
 var gameover_script : GameOver;
 var input_script : TwoButtonInput;
 
-public var timer : float = 10;
+public var timer_start : float = 15.0;
+public var timer : float;
+public var input_timer_start : float = 3.0;
+public var input_timer : float;
 public var ready_timer : boolean = false;
 public var currently_timing : boolean = false;
 public var timer_string : UI.Text;
 public var timer_slider : Slider;
 public var input_string : UI.Text;
-public var input_timer : float = 3;
+
+
+function Awake() {
+	timer = timer_start;
+	input_timer = input_timer_start;
+	timer_string.text = timer.ToString("#.0") + "s";
+}
 
 function Update () {
 
@@ -20,7 +29,7 @@ function Update () {
 			input_string.text = input_timer.ToString("#.0");
 		}
 		else {
-			input_timer = 3;
+			input_timer = input_timer_start;
 			input_string.text = "Input Combo!";
 			ready_timer = false;
 			currently_timing = true;
@@ -29,16 +38,16 @@ function Update () {
 	}
 	if(currently_timing) {
 		if(timer <= 0) {
-			gameover_script.GameOver("Game Over!\nPress any button to continue.");
+			gameover_script.GameOver("Game Over!\nYou ran out of time.  :(");
 		}
 		else {
 			timer -= Time.deltaTime;
 			timer_string.text = timer.ToString("#.0") + "s";
-			if(timer <= 10) {
-				timer_slider.value = timer * 10;
+			if(timer > timer_start) {
+				timer_slider.value = 100;
 			}
 			else {
-				timer_slider.value = 100;
+				timer_slider.value = Mathf.Round((timer / timer_start) * 100);
 			}
 		}
 	}
@@ -50,4 +59,15 @@ function ReadyForInput() {
 
 function StartGame() {
 	ready_timer = true;
+}
+
+function AddTime(amount : float) {
+	timer += amount;
+	timer_string.text = timer.ToString("#.0") + "s";
+	if(timer > timer_start) {
+		timer_slider.value = 100;
+	}
+	else {
+		timer_slider.value = Mathf.Round((timer / timer_start) * 100);
+	}
 }

@@ -8,7 +8,7 @@ health as the damage.  Can only be done once per battle.
 public var soundEffect : AudioClip;
 public var soundEffectTwo : AudioClip;
 
-var onEnemyAnimation : GameObject;
+//var onEnemyAnimation : GameObject;
 
 public class SuperCharge extends Action {
 	public var charge_count : int = 0;
@@ -39,6 +39,7 @@ public class SuperCharge extends Action {
 
 				battleMessage = "HOLY COWSOX!!  KABLOOMERS!  WOW!\n";
 				battleMessage += actor.entity_name + " does "+damage+" damage to "+target.entity_name+'.\n';
+
 				onEnemyAnimation.SetActive(true);
 				StartCoroutine(waitAwhile());
 			}
