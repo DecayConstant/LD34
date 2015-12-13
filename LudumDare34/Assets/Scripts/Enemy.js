@@ -21,6 +21,7 @@ public class Enemy extends Entity {
 	//public var taunt_count : int = 0;
 	public function UpdateStatus (){
 		//Kung fu stat conditions
+	if(reconned == true){
 		if (kungfu == 1){
 			kungfuUpArrow.SetActive(true);
 		} else if (kungfu == 0){
@@ -77,7 +78,7 @@ public class Enemy extends Entity {
 		//displays the poison counter.
 		poisonCounter.text = poisoned.ToString();
 
-
+		}
 	}
 
 };
