@@ -13,6 +13,8 @@ public var gamewin_restart_text : Text;
 
 public var restart_timer : float = 3.0;
 
+public var credits_panel : GameObject;
+
 public var soundEffect: AudioClip;
 public var sound_effect_played : boolean = false;
 
@@ -48,8 +50,12 @@ function Update() {
 		restart_timer -= Time.deltaTime;
 		if(restart_timer <= 0) {
 			gameover_restart_text.color = Color(1,1,1,1);
-			if(Input.GetButtonDown("ButtonA") || Input.GetButtonDown("ButtonB")) {
+			if(Input.GetButtonDown("ButtonA")) {
 				Application.LoadLevel(Application.loadedLevel);
+			}
+			else if(Input.GetButtonDown("ButtonB")) {
+				gameover_panel.SetActive(false);
+				credits_panel.SetActive(true);
 			}
 		}
 	}
@@ -58,8 +64,12 @@ function Update() {
 		restart_timer -= Time.deltaTime;
 		if(restart_timer <= 0) {
 			gamewin_restart_text.color = Color(1,1,1,1);
-			if(Input.GetButtonDown("ButtonA") || Input.GetButtonDown("ButtonB")) {
+			if(Input.GetButtonDown("ButtonA")) {
 				Application.LoadLevel(Application.loadedLevel);
+			}
+			if(Input.GetButtonDown("ButtonB")) {
+				gamewin_panel.SetActive(false);
+				credits_panel.SetActive(true);
 			}
 		}
 	}
