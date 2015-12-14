@@ -157,7 +157,7 @@ function HeroAction(slot : int) {
 		hero_image1.SetActive(false);
 		hero_image2.SetActive(true);
 		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
-		hero.attack += 5;
+		hero.level_bonus += 5;
 		hero_level++;
 	}
 	//Level 3
@@ -165,7 +165,7 @@ function HeroAction(slot : int) {
 		hero_image2.SetActive(false);
 		hero_image3.SetActive(true);
 		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
-		hero.attack += 5;
+		hero.level_bonus += 5;
 		hero_level++;
 	}
 	//Level 4
@@ -173,7 +173,7 @@ function HeroAction(slot : int) {
 		hero_image3.SetActive(false);
 		hero_image4.SetActive(true);
 		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
-		hero.attack += 5;
+		hero.level_bonus += 5;
 		hero_level++;
 	}
 }
