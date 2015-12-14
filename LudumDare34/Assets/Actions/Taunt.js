@@ -12,7 +12,7 @@ public class Taunt extends Action {
 
 	public function action(actor : Entity, target:Entity){
 
-		prepareAnimation(target);
+		prepareAnimation(actor);
 
     	var battleMessage:String;
 
