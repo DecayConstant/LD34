@@ -17,7 +17,7 @@ public var input_string : UI.Text;
 
 
 function Awake() {
-	timer = timer_start;
+	timer = DifficultySettings.battle_length;
 	input_timer = input_timer_start;
 	timer_string.text = timer.ToString("#.0") + "s";
 }
@@ -45,7 +45,7 @@ function Update () {
 			else {
 				timer -= Time.deltaTime;
 				timer_string.text = timer.ToString("#.0") + "s";
-				if(timer > timer_start) {
+				if(timer > DifficultySettings.battle_length) {
 					timer_slider.value = 100;
 				}
 				else {
@@ -67,10 +67,10 @@ function StartGame() {
 function AddTime(amount : float) {
 	timer += amount;
 	timer_string.text = timer.ToString("#.0") + "s";
-	if(timer > timer_start) {
+	if(timer > DifficultySettings.battle_length) {
 		timer_slider.value = 100;
 	}
 	else {
-		timer_slider.value = Mathf.Round((timer / timer_start) * 100);
+		timer_slider.value = Mathf.Round((timer / DifficultySettings.battle_length) * 100);
 	}
 }

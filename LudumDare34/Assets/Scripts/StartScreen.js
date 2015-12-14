@@ -71,8 +71,6 @@ function startBattle (){
 	battleActions.setupEnemy();
 	battleActions.setupHero();
 
-	Debug.Log('POOP: '+battleActions.enemy.defense);
-
 	game_started = true;
 	timer_script.StartGame();
 }
