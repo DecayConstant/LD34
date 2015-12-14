@@ -21,9 +21,11 @@ public var sound_effect_played : boolean = false;
 public var bgm_sound : AudioSource;
 
 public var timer_script : Timer;
+public var input_script : TwoButtonInput;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
+	input_script = GetComponent(TwoButtonInput);
 }
 
 function GameOver(str : String) {
@@ -31,6 +33,7 @@ function GameOver(str : String) {
 	gameover_panel.SetActive(true);
 	gameover_text.text = str;
 	timer_script.game_running = false;
+	input_script.accept_input = false;
 }
 
 function WinGame(str : String) {
@@ -38,6 +41,7 @@ function WinGame(str : String) {
 	gamewin_panel.SetActive(true);
 	gamewin_text.text = str;
 	timer_script.game_running = false;
+	input_script.accept_input = false;
 }
 
 function Update() {
