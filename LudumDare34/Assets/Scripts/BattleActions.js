@@ -65,7 +65,7 @@ function Awake(){
 
 }
 function Start(){
-	var hero_names = ["Da'addad"];
+	var hero_names = ["Da'Addad"];
 	var enemy_names = ["Lord Plop", "Dread Whatsit", "Sven the Vile", "Bart"];
 
 	//Randomize the hero and enemy
