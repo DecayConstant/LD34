@@ -93,10 +93,11 @@ function creditsScreen (){
 }
 
 function creditScreenOff (){
-	startScreen.SetActive(true);
-	gameControlScreen.SetActive(false);
-	creditsScreenPanel.SetActive(false);
-	current_screen = 1;
+	//startScreen.SetActive(true);
+	//gameControlScreen.SetActive(false);
+	//creditsScreenPanel.SetActive(false);
+	//current_screen = 1;
+	Application.LoadLevel(Application.loadedLevel);
 }
 
 function changeDifficulty() {
