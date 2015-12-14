@@ -45,6 +45,7 @@ function Update () {
 		for(var i : int = 0; i < input_slots.Length; i++) {
 			if(Random.value < timer_bonus_chance) {
 				input_slots[i].text = possible_buttons[Random.Range(0, possible_buttons.length)];
+				input_slots[i].color = Color(0.5,0.5,0.5,0.5);
 				bonus_panels[i].color = Color(0.2,0.9,0.2,0.7);
 			}
 		}
@@ -129,6 +130,7 @@ function Update () {
 			bonus_panels[0].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[0].text = current_input[0].ToString();
+		input_slots[0].color = Color(0.15,0.15,0.15,1);
 	}
 	if(current_input.Length == 2 && new_input) {
 		new_input = false;
@@ -141,6 +143,7 @@ function Update () {
 			bonus_panels[1].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[1].text = current_input[1].ToString();
+		input_slots[1].color = Color(0.15,0.15,0.15,1);
 	}
 	if(current_input.Length == 3 && new_input) {
 		new_input = false;
@@ -153,6 +156,7 @@ function Update () {
 			bonus_panels[2].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[2].text = current_input[2].ToString();
+		input_slots[2].color = Color(0.15,0.15,0.15,1);
 	}
 	if(current_input.Length == 4 && new_input) {
 		new_input = false;
@@ -165,6 +169,7 @@ function Update () {
 			bonus_panels[3].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[3].text = current_input[3].ToString();
+		input_slots[3].color = Color(0.15,0.15,0.15,1);
 	}
 }
 
