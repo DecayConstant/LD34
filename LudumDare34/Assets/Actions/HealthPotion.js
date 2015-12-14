@@ -1,15 +1,7 @@
 ﻿#pragma strict
 
-public var soundEffect : AudioClip;
 
 public class HealthPotion extends Action {
-
-	function waitAwhile (){
-		
-		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
-		yield WaitForSeconds (1.0);
-        onPlayerAnimation.SetActive(false);
-	}
 
 	public function action(actor : Entity, target:Entity){
 

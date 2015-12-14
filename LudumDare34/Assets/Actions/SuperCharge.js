@@ -5,7 +5,6 @@ This attack requires multiple turns of charging to execute, and does 25% of the 
 health as the damage.  Can only be done once per battle.
 */
 
-public var soundEffect : AudioClip;
 public var soundEffectTwo : AudioClip;
 
 //var onEnemyAnimation : GameObject;
@@ -13,13 +12,6 @@ public var soundEffectTwo : AudioClip;
 public class SuperCharge extends Action {
 	public var charge_count : int = 0;
 	public var executed : boolean = false;
-
-	function waitAwhile (){
-		
-		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
-		yield WaitForSeconds (1.0);
-		onEnemyAnimation.SetActive(false);
-	}
 
 	public function action(actor : Entity, target:Entity){
 		charge_count++;

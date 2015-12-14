@@ -6,6 +6,8 @@ public class Action extends MonoBehaviour{
 	var onEnemyAnimation: GameObject;
 	var onPlayerAnimation: GameObject;
 
+	public var soundEffect: AudioClip;
+
 	public var strength : int;
 	public var action_name: String;   //This is the name we display to the player. e.g. 'MegaloFrost.'
 	public var generic_name: String; //This is a generic name we use inernally to match actions to buff/debuffs. e.g. 'ice'
@@ -19,6 +21,19 @@ public class Action extends MonoBehaviour{
 
 	public function Action(){
 		strength = 1;
+	};
+
+	function waitAwhile (){
+		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
+		yield WaitForSeconds(1.0);
+
+		if(onEnemyAnimation){
+			onEnemyAnimation.SetActive(false);
+		}
+
+		if(onPlayerAnimation){
+        	onPlayerAnimation.SetActive(false);
+        }
 	};
 
 	function prepareAnimation(target:Entity){
