@@ -7,6 +7,7 @@ public var battle_timer : float = 2.0;
 public var hero_turn : boolean = true;
 public var enemy_turn : boolean = false;
 public var timer_script : Timer;
+public var gameover_script : GameOver;
 public var battleactions_script : BattleActions;
 public var hero : Hero;
 public var enemy : Enemy;
@@ -26,6 +27,7 @@ private var new_input : boolean = false;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
+	gameover_script = GetComponent(GameOver);
 	battleactions_script = GetComponent(BattleActions);
 	hero=GetComponent(Hero);
 	enemy=GetComponent(Enemy);
@@ -59,6 +61,14 @@ function Update () {
 			battleactions_script.HeroAction(MapInputString(current_input));
 			hero.UpdateStatus();
 			enemy.UpdateStatus();
+			if(enemy.health <= 0) {
+				timer_script.currently_timing = false;
+				gameover_script.WinGame("You win the game!\n" + hero.entity_name + " defeated " + enemy.entity_name + " with " + timer_script.timer.ToString("#.0") + " seconds left!");
+			}
+			else if(hero.health <= 0) {
+				timer_script.currently_timing = false;
+				gameover_script.GameOver("The hero's legacy ends.\n" + hero.entity_name + " was defeated by " + enemy.entity_name + ".");
+			}
 			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
 			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
 			hero_turn = false;
@@ -70,6 +80,14 @@ function Update () {
 			battleactions_script.EnemyAction();
 			enemy.UpdateStatus();
 			hero.UpdateStatus();
+			if(enemy.health <= 0) {
+				timer_script.currently_timing = false;
+				gameover_script.WinGame("You win the game!\n" + hero.entity_name + " defeated " + enemy.entity_name + " with " + timer_script.timer.ToString("#.0") + " seconds left!");
+			}
+			else if(hero.health <= 0) {
+				timer_script.currently_timing = false;
+				gameover_script.GameOver("The hero's legacy ends.\n" + hero.entity_name + " was defeated by " + enemy.entity_name + ".");
+			}
 			hero_hp_slider.value = Mathf.Round((parseFloat(hero.health) / parseFloat(hero.max_health)) * 100);
 			enemy_hp_slider.value = Mathf.Round((parseFloat(enemy.health) / parseFloat(enemy.max_health)) * 100);
 			enemy_turn = false;
