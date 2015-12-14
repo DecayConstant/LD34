@@ -13,6 +13,8 @@ public var EnemyActions : Action[];
 public var Action_Textbars : Text[];
 public var Action_Panels : Image[];
 
+public var dialogue_box : Text;
+
 public var kungfu : Kungfu; 
 public var karate : Karate; 
 public var taunt : Taunt;
@@ -118,12 +120,24 @@ function Start(){
 }
 
 function HeroAction(slot : int) {
+	//Apply poison damage
+	if(hero.poisoned > 0) {
+		hero.health -= poison.strength;
+		hero.poisoned -= 1;
+		dialogue_box.text = hero.entity_name + " took " + poison.strength + " poison damage.\n" + dialogue_box.text;
+	}
 	BattleActions[slot].action(hero, enemy);
 	Action_Textbars[slot].text = BattleActions[slot].action_name;
 	Action_Panels[slot].color = Color(0,1,0,1);
 }
 
 function EnemyAction() {
+	//Apply poison damage
+	if(enemy.poisoned > 0) {
+		enemy.health -= poison.strength;
+		enemy.poisoned -= 1;
+		dialogue_box.text = enemy.entity_name + " took " + poison.strength + " poison damage.\n" + dialogue_box.text;
+	}
 	//For now, just do a random action to hero
 	EnemyActions[Random.Range(0, EnemyActions.Length)].action(enemy,hero);
 }
