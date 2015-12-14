@@ -6,7 +6,7 @@ public class Enemy extends Entity {
 
 	public function Enemy(){
 		playerType = 2;
-		attack=150;
+		attack=160;
 		Debug.Log("enemy" + playerType);
 	};
 

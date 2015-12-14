@@ -15,7 +15,7 @@ public class Action extends MonoBehaviour{
 	public var dialogue_box : Text;
 
 	public var buffMultiplier : float = 1.5;
-	public var debuffMultiplier :float = 0.6;
+	public var debuffMultiplier :float = 0.55;
 
 	public function action(actor : Entity, target:Entity){};
 
