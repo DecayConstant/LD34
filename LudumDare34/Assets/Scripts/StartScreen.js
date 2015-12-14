@@ -107,8 +107,10 @@ function changeDifficulty() {
 	}
 	if(game_difficulty == 1) {
 		difficulty_text.text = "Easy Mode";
+		DifficultySettings.setEasyMode();
 	}
 	if(game_difficulty == 2) {
 		difficulty_text.text = "Hard Mode";
+		DifficultySettings.setHardMode();
 	}
 }

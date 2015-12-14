@@ -40,6 +40,7 @@ public var variation_percent : float = 0.1f;
 //public var actions : BattleActions = new Array();
 
 function Awake(){
+	Debug.Log('HOLLA: '+DifficultySettings.buffMultiplier);
 	BattleActions = new Action[16];
 	EnemyActions = new Action[9];
 

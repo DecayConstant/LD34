@@ -1,6 +1,8 @@
 ﻿#pragma strict
 import UnityEngine.UI;
 
+
+
 public class Action extends MonoBehaviour{
 
 	var onEnemyAnimation: GameObject;
@@ -14,8 +16,8 @@ public class Action extends MonoBehaviour{
 
 	public var dialogue_box : Text;
 
-	public var buffMultiplier : float = 1.5;
-	public var debuffMultiplier :float = 0.55;
+	//public var buffMultiplier : float;// =  difficultySettings.buffMultiplier;//1.5;
+	//public var debuffMultiplier :float;// = 0.55;
 
 	public function action(actor : Entity, target:Entity){};
 
@@ -60,20 +62,20 @@ public class Action extends MonoBehaviour{
     	//a random attack boost. 
     	if(actor.playerType == 2){
     		if(actorBuff == 1 && targetBuff == -1){
-    			damage = parseInt(damage*buffMultiplier);
+    			damage = parseInt(damage*DifficultySettings.buffMultiplier);
     		}
     	}
 
     	if(actorBuff == 1){
-        	damage = parseInt(damage * buffMultiplier);
+        	damage = parseInt(damage * DifficultySettings.buffMultiplier);
         } else if(actorBuff == -1){
-        	damage = parseInt(damage * debuffMultiplier);
+        	damage = parseInt(damage * DifficultySettings.debuffMultiplier);
         }
 
         if(targetBuff == 1){
-        	damage = parseInt(damage * debuffMultiplier);
+        	damage = parseInt(damage * DifficultySettings.debuffMultiplier);
         } else if(targetBuff == -1){
-        	damage = parseInt(damage * buffMultiplier);
+        	damage = parseInt(damage * DifficultySettings.buffMultiplier);
         }
 
         //If the target has guards saved up, apply it to this attack, and reduce guard counter.

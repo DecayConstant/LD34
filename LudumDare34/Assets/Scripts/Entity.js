@@ -16,7 +16,10 @@ var earthDwnArrow : GameObject;
 var enemyStatPanel : GameObject;
 var poisonCounter : Text;
 
+
+
 public class Entity extends MonoBehaviour {
+
 	public var entity_name : String = '';
 	public var max_health:int= 1000;
     public var health : int = 1000;
@@ -34,7 +37,6 @@ public class Entity extends MonoBehaviour {
     //Statuses
     public var poisoned : int = 0;  //value is a count down of the number of turns of poision they have left;
     public var guarded : int = 0;
-    public var statuses : String[];
     public var reconned : boolean = false;
 
     public var taunt_count : int = 0;

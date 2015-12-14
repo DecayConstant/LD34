@@ -6,13 +6,20 @@ public class Enemy extends Entity {
 
 	public function Enemy(){
 		playerType = 2;
-		attack=160;
+
+		attack = DifficultySettings.enemyAttack;
+		defense = DifficultySettings.enemyDefense;
+
 		Debug.Log("enemy" + playerType);
 	};
 
 	public function Enemy(myName:String){
 		entity_name=myName;
 		playerType = 2;
+
+		attack = DifficultySettings.enemyAttack;
+		defense = DifficultySettings.enemyDefense;
+
 		Debug.Log("enemy two" + playerType);
 
 	};	
