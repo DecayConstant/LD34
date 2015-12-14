@@ -6,7 +6,7 @@ LudumDare34/[Oo]bj/
 LudumDare34/[Bb]uild
 LudumDare34/[Ll]ibrary/
 LudumDare34/sysinfo.txt
- 
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
@@ -19,7 +19,7 @@ LudumDare34/*.sln*
 LudumDare34/*.user
 LudumDare34/*.unityproj
 LudumDare34/*.booproj
- 
+
 # ============ #
 # OS generated #
 # ============ #
