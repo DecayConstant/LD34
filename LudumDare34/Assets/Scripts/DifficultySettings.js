@@ -3,11 +3,12 @@
 	
 public class DifficultySettings extends MonoBehaviour{
 
-	public static var battle_length : float = 15.0;;
+	public static var battle_length : float = 15.0;
+
 	public static var buffMultiplier : float = 1.5;
 	public static var debuffMultiplier : float = 0.6;
 
-	public static var enemyAttack:int = 140; 
+	public static var enemyAttack:int = 100; 
 	public static var enemyDefense:int = 100;
 
 	public static var heroAttack:int = 100;
@@ -20,7 +21,7 @@ public class DifficultySettings extends MonoBehaviour{
 		buffMultiplier = 1.5;
 		debuffMultiplier = .60;
 
-		enemyAttack = 130;
+		enemyAttack = 100;
 		enemyDefense = 100;
 
 		heroAttack = 100;
@@ -34,7 +35,7 @@ public class DifficultySettings extends MonoBehaviour{
 		buffMultiplier = 1.5;
 		debuffMultiplier = .55;
 
-		enemyAttack = 160;
+		enemyAttack = 140;
 		enemyDefense = 100;
 
 		heroAttack = 100;
