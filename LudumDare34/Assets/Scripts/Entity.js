@@ -25,6 +25,7 @@ public class Entity extends MonoBehaviour {
     public var health : int = 1000;
     public var attack : int = 100;
     public var defense : int = 101;
+    public var level_bonus : int = 0;
 
     //Stregnths/Weaknesses.  1=strong -1=weak 0=norma;
     public var earth : int = 0;

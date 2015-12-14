@@ -54,7 +54,7 @@ public class Action extends MonoBehaviour{
 	};
 
 	function calculateDamage (actor:Entity, target:Entity, actorBuff:int, targetBuff: int) : int{
-    	var damage = strength+actor.attack-target.defense;
+    	var damage = strength+actor.attack-target.defense + actor.level_bonus;
 
     	//Make the enemy's SUPER EFFECTIVE attacks even more SUPER EFFECTIVE.
     	//This is an attempt at balancing the Enemy's stupid random behaivor with 
