@@ -7,6 +7,11 @@ public var enemy : Enemy;
 public var hero_name_text : Text;
 public var enemy_name_text : Text;
 
+public var hero_image1 : GameObject;
+public var hero_image2 : GameObject;
+public var hero_image3 : GameObject;
+public var hero_image4 : GameObject;
+
 public var BattleActions : Action[];
 public var EnemyActions : Action[];
 
@@ -31,6 +36,9 @@ public var superCharge : SuperCharge;
 public var recon : Recon;
 public var randomBuff : RandomBuff;
 public var randomDebuff : RandomDebuff;
+
+public var ability_num : int = 0;
+public var hero_level : int = 1;
 
 //Amount to randomize stats
 public var variation_percent : float = 0.1f;
@@ -135,11 +143,39 @@ function HeroAction(slot : int) {
 	if(hero.poisoned > 0) {
 		hero.health -= poison.strength;
 		hero.poisoned -= 1;
-		dialogue_box.text = hero.entity_name + " took " + poison.strength + " poison damage.\n" + dialogue_box.text;
+		dialogue_box.text = "<color=red>" + hero.entity_name + " took " + poison.strength + " poison damage.</color>\n" + dialogue_box.text;
 	}
 	BattleActions[slot].action(hero, enemy);
+	if(Action_Textbars[slot].text == "???") {
+		ability_num++;
+	}
 	Action_Textbars[slot].text = BattleActions[slot].action_name;
 	Action_Panels[slot].color = Color(0,1,0,1);
+
+	//Level 2
+	if(ability_num == 4 && hero_level == 1) {
+		hero_image1.SetActive(false);
+		hero_image2.SetActive(true);
+		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
+		hero.attack += 5;
+		hero_level++;
+	}
+	//Level 3
+	if(ability_num == 8 && hero_level == 2) {
+		hero_image2.SetActive(false);
+		hero_image3.SetActive(true);
+		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
+		hero.attack += 5;
+		hero_level++;
+	}
+	//Level 4
+	if(ability_num == 12 && hero_level == 3) {
+		hero_image3.SetActive(false);
+		hero_image4.SetActive(true);
+		dialogue_box.text = "<color=purple>" + hero.entity_name + " has leveled up! +5 to Attack</color>\n" + dialogue_box.text;
+		hero.attack += 5;
+		hero_level++;
+	}
 }
 
 function EnemyAction() {
@@ -147,7 +183,7 @@ function EnemyAction() {
 	if(enemy.poisoned > 0) {
 		enemy.health -= poison.strength;
 		enemy.poisoned -= 1;
-		dialogue_box.text = enemy.entity_name + " took " + poison.strength + " poison damage.\n" + dialogue_box.text;
+		dialogue_box.text = "<color=green>" + enemy.entity_name + " took " + poison.strength + " poison damage.</color>\n" + dialogue_box.text;
 	}
 	//For now, just do a random action to hero
 	EnemyActions[Random.Range(0, EnemyActions.Length)].action(enemy,hero);
