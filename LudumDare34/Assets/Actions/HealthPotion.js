@@ -1,9 +1,14 @@
 ﻿#pragma strict
-
+import UnityEngine.UI;
 
 public class HealthPotion extends Action {
 
+	public var potion_panel : GameObject;
+	public var potion_text : Text;
+
 	public function action(actor : Entity, target:Entity){
+
+		potion_panel.SetActive(true);
 
 		prepareAnimation(actor);
 
@@ -24,6 +29,7 @@ public class HealthPotion extends Action {
 	        battleMessage = "You'd like to swig a health potion, but you are out!\n";
 	    }
 
+	    potion_text.text = "x" + actor.health_potions.ToString();
      	dialogue_box.text = colorizeBattletext(actor, battleMessage) + dialogue_box.text;
 
 		StartCoroutine(waitAwhile());
