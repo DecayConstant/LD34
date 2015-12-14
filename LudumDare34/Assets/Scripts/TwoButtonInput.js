@@ -125,6 +125,9 @@ function Update () {
 			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
 			timer_script.AddTime(timer_bonus_amount);
 		}
+		else {
+			bonus_panels[0].color = Color(0.6,0.6,0.6,0.6);
+		}
 		input_slots[0].text = current_input[0].ToString();
 	}
 	if(current_input.Length == 2 && new_input) {
@@ -133,6 +136,9 @@ function Update () {
 			timer_bonus_total += timer_bonus_amount;
 			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
 			timer_script.AddTime(timer_bonus_amount);
+		}
+		else {
+			bonus_panels[1].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[1].text = current_input[1].ToString();
 	}
@@ -143,6 +149,9 @@ function Update () {
 			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
 			timer_script.AddTime(timer_bonus_amount);
 		}
+		else {
+			bonus_panels[2].color = Color(0.6,0.6,0.6,0.6);
+		}
 		input_slots[2].text = current_input[2].ToString();
 	}
 	if(current_input.Length == 4 && new_input) {
@@ -151,6 +160,9 @@ function Update () {
 			timer_bonus_total += timer_bonus_amount;
 			timer_bonus_text.text = timer_bonus_total.ToString("#.0") + "s";
 			timer_script.AddTime(timer_bonus_amount);
+		}
+		else {
+			bonus_panels[3].color = Color(0.6,0.6,0.6,0.6);
 		}
 		input_slots[3].text = current_input[3].ToString();
 	}
