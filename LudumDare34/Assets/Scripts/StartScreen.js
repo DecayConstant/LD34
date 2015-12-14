@@ -2,10 +2,14 @@
 
 var startScreen : GameObject;
 var gameControlScreen : GameObject;
+var creditsScreenPanel : GameObject;
+
 var timer_script : Timer;
 
 var game_started : boolean = false;
 var controls_screen : boolean = false;
+
+
 
 function Awake() {
 	timer_script = GetComponent(Timer);
@@ -46,5 +50,16 @@ function gameControls (){
 function turnOffGameControlScreen(){
 	gameControlScreen.SetActive(false);
 
+
+}
+
+function creditsScreen (){
+
+	creditsScreenPanel.SetActive(true);
+}
+
+function creditScreenOff (){
+	creditsScreenPanel.SetActive(false);
+	gameControlScreen.SetActive(false);
 
 }
