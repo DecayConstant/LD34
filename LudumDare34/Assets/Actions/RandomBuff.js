@@ -35,7 +35,7 @@ public class RandomBuff extends Action {
 
 		var battleMessage:String;
         battleMessage = actor.entity_name+" foucuses their hocus pocus and feels the majestic powers of "+buff+" surround them.\n";
-        dialogue_box.text = battleMessage+dialogue_box.text;
+        dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
         StartCoroutine(waitAwhile());
 
     };

@@ -12,7 +12,7 @@ public class Reequip extends Action {
         battleMessage += "Attack: "+actor.attack+" => "+newAttack+'\n';
         battleMessage += "Defense: "+actor.defense+" => "+newDefense+'\n';
 
-        dialogue_box.text = battleMessage+dialogue_box.text;
+        dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
 
         actor.attack = newAttack;
         actor.defense = newDefense;

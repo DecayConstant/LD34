@@ -7,7 +7,7 @@ public class Guard extends Action {
 
         var battleMessage:String;
      	battleMessage = "You put up your dukes and gaurd against the next attack.\n";
-     	dialogue_box.text = battleMessage + dialogue_box.text;
+     	dialogue_box.text = colorizeBattletext(actor, battleMessage) + dialogue_box.text;
     };
 
     public function Guard(){

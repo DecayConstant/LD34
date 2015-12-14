@@ -46,7 +46,7 @@ public class SuperCharge extends Action {
 			}
 		}
 
-		dialogue_box.text = battleMessage+dialogue_box.text;
+		dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
     };
 
     public function SuperCharge(){
