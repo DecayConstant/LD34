@@ -65,13 +65,10 @@ function Awake(){
 	randomDebuff=GetComponent(RandomDebuff);
 
 }
-function Start(){
-	var hero_names = ["Da'Addad"];
-	var enemy_names = ["Lord Plop", "Dread Whatsit", "Sven the Vile", "Bart"];
 
-	//Randomize the hero and enemy
-	hero.entity_name = hero_names[Random.Range(0, hero_names.Length)];
-	hero_name_text.text = hero.entity_name;
+public function setupEnemy(){
+	enemy.updateStats();
+	var enemy_names = ["Lord Plop", "Dread Whatsit", "Sven the Vile", "Bart"];
 	enemy.entity_name = enemy_names[Random.Range(0, enemy_names.Length)];
 	enemy_name_text.text = enemy.entity_name;
 
@@ -89,6 +86,20 @@ function Start(){
 	enemy.defense = Random.Range(Mathf.Round(enemy.defense * (1 - variation_percent)),
 								 Mathf.Round(enemy.defense * (1 + variation_percent)));
 
+	Debug.Log('SET UP ENEMY!');
+};
+
+public function setupHero(){
+	hero.updateStats();
+	var hero_names = ["Da'Addad"];
+	//Randomize the hero and enemy
+	hero.entity_name = hero_names[Random.Range(0, hero_names.Length)];
+	hero_name_text.text = hero.entity_name;
+};
+
+
+function Start(){
+	
 	BattleActions[0] = kungfu;
 	BattleActions[1] = karate;
 	BattleActions[2] = taunt;

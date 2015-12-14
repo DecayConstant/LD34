@@ -21,7 +21,7 @@ public class Fire extends Action {
 
     public function Fire() {
         generic_name = 'fire';
-        action_name = "MegaFlare";
+        action_name = "MegaFlare!";
         strength = 50;
     };
 

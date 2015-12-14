@@ -4,6 +4,8 @@ import UnityEngine.UI;
 var startScreen : GameObject;
 var gameControlScreen : GameObject;
 var creditsScreenPanel : GameObject;
+var battleActions : BattleActions;
+
 public var difficulty_text : Text;
 
 var timer_script : Timer;
@@ -20,6 +22,7 @@ var current_screen : int = 1;
 
 function Awake() {
 	timer_script = GetComponent(Timer);
+	battleActions = GetComponent(BattleActions);
 	startScreen.SetActive(true);
 	gameControlScreen.SetActive(false);
 	creditsScreenPanel.SetActive(false);
@@ -28,12 +31,7 @@ function Awake() {
 function Update () {
 	if(!game_started) {
 		if(current_screen == 1 && Input.GetButtonDown("ButtonA")) {
-			startScreen.SetActive(false);
-			gameControlScreen.SetActive(false);
-			creditsScreenPanel.SetActive(false);
-			current_screen = 0;
-			game_started = true;
-			timer_script.StartGame();
+			startBattle();
 		}
 		else if(current_screen == 1 && Input.GetButtonDown("ButtonB")) {
 			startScreen.SetActive(false);
@@ -64,12 +62,21 @@ function Update () {
 	}
 }
 
-function startButton (){
+function startBattle (){
 	startScreen.SetActive(false);
 	gameControlScreen.SetActive(false);
 	creditsScreenPanel.SetActive(false);
 	current_screen = 0;
+
+	battleActions.setupEnemy();
+	battleActions.setupHero();
+
+	Debug.Log('POOP: '+battleActions.enemy.defense);
+
+	game_started = true;
+	timer_script.StartGame();
 }
+
 
 function gameControls (){
 	startScreen.SetActive(false);

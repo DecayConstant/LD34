@@ -2,26 +2,18 @@
 
 
 public class Enemy extends Entity {
-	//public var taunt_count : int = 0;
 
 	public function Enemy(){
-		playerType = 2;
-
-		attack = DifficultySettings.enemyAttack;
-		defense = DifficultySettings.enemyDefense;
-
-		Debug.Log("enemy" + playerType);
+		
 	};
 
-	public function Enemy(myName:String){
-		entity_name=myName;
+	function Start(){
 		playerType = 2;
 
 		attack = DifficultySettings.enemyAttack;
-		defense = DifficultySettings.enemyDefense;
+		defense = DifficultySettings.enemyDefense; 
 
-		Debug.Log("enemy two" + playerType);
-
-	};	
+		Debug.Log("enemy " + playerType+"  "+DifficultySettings.enemyAttack);
+	}
 
 };

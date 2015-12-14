@@ -22,7 +22,6 @@ public class Action extends MonoBehaviour{
 	public function action(actor : Entity, target:Entity){};
 
 	public function Action(){
-		strength = 1;
 	};
 
 	function waitAwhile (){

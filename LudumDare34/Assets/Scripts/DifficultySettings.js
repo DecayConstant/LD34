@@ -3,25 +3,25 @@
 	
 public class DifficultySettings extends MonoBehaviour{
 
-	public static var buffMultiplier:float=.99;
-	public static var debuffMultiplier :float = 0.6;
+	public static var buffMultiplier : float = 1.5;
+	public static var debuffMultiplier : float = 0.6;
 
-	public static var enemyAttack:int = 150;
+	public static var enemyAttack:int = 140; 
 	public static var enemyDefense:int = 100;
 
 	public static var heroAttack:int = 100;
-	public static var heroDefence:int = 100;
+	public static var heroDefense:int = 100;
 
 	public static function setEasyMode(){
 		Debug.Log('EASY MODE!');
 		buffMultiplier = 1.5;
-		debuffMultiplier = .6;
+		debuffMultiplier = .61;
 
-		enemyAttack = 150;
+		enemyAttack = 140;
 		enemyDefense = 100;
 
 		heroAttack = 100;
-		heroDefence = 100;
+		heroDefense = 100;
 	};
 
 	public static function setHardMode(){
@@ -33,7 +33,7 @@ public class DifficultySettings extends MonoBehaviour{
 		enemyDefense = 100;
 
 		heroAttack = 100;
-		heroDefence = 100;
+		heroDefense = 100;
 	};
 
 	public function DifficultySettings(){

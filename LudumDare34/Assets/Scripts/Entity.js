@@ -24,7 +24,7 @@ public class Entity extends MonoBehaviour {
 	public var max_health:int= 1000;
     public var health : int = 1000;
     public var attack : int = 100;
-    public var defense : int = 100;
+    public var defense : int = 101;
 
     //Stregnths/Weaknesses.  1=strong -1=weak 0=norma;
     public var earth : int = 0;
@@ -48,6 +48,16 @@ public class Entity extends MonoBehaviour {
     public function takeDamage(damage:int){
     	health -= damage;
     };
+
+    public function updateStats(){
+    	if(playerType==1){
+    		attack = DifficultySettings.heroAttack;
+			defense = DifficultySettings.heroDefense; 
+    	}else if(playerType==2){
+			attack = DifficultySettings.enemyAttack;
+			defense = DifficultySettings.enemyDefense; 
+		}
+	}
 
     function setAllArrows(bool:boolean){
     	kungfuUpArrow.SetActive(bool);
