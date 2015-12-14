@@ -3,7 +3,8 @@ import UnityEngine.UI;
 
 public var accept_input : boolean = false;
 public var current_input : String = "";
-public var battle_timer : float = 2.0;
+public var battle_timer_start : float = 3.0;
+public var battle_timer : float;
 public var hero_turn : boolean = true;
 public var enemy_turn : boolean = false;
 public var timer_script : Timer;
@@ -26,6 +27,7 @@ private var possible_buttons = new Array('A', 'D');
 private var new_input : boolean = false;
 
 function Awake() {
+	battle_timer = battle_timer_start;
 	timer_script = GetComponent(Timer);
 	gameover_script = GetComponent(GameOver);
 	battleactions_script = GetComponent(BattleActions);
@@ -77,7 +79,7 @@ function Update () {
 		}
 
 		if(enemy_turn && battle_timer <= 0) {
-			battle_timer = 2.0;
+			battle_timer = battle_timer_start;
 			battleactions_script.EnemyAction();
 			enemy.UpdateStatus();
 			hero.UpdateStatus();
@@ -105,7 +107,7 @@ function Update () {
 			timer_bonus_text.text = "";
 			timer_bonus_total = 0.0;
 			hero_turn = true;
-			battle_timer = 2.0;
+			battle_timer = battle_timer_start;
 			timer_script.ready_timer = true;
 		}
 	}
