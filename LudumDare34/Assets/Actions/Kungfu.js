@@ -1,16 +1,6 @@
 ﻿#pragma strict
 
-public var soundEffect : AudioClip;
-
 public class Kungfu extends Action {
-
-	function waitAwhile (){
-		
-		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
-		yield WaitForSeconds (1.0);
-		onEnemyAnimation.SetActive(false);
-        onPlayerAnimation.SetActive(false);
-	}
 
 	public function action(actor : Entity, target:Entity){
         var damage = calculateDamage(actor,target,actor.kungfu,target.kungfu);

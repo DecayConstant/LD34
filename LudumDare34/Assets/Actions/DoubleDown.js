@@ -3,9 +3,7 @@
 public class DoubleDown extends Action {
 	var gameover_script : GameOver;
 
-
 	public var use_count=0;
-
 
 	function Awake(){
 		gameover_script = GetComponent(GameOver);

@@ -1,25 +1,10 @@
 ﻿#pragma strict
 
-public var soundEffect : AudioClip;
-
 public class Recon extends Action {
 
-	function waitAwhile (){
-		
-		GetComponent.<AudioSource>().PlayOneShot(soundEffect, 0.5f);
-		yield WaitForSeconds (1.0);
-		onEnemyAnimation.SetActive(false);
-       
-	}
 
 	public function action(actor : Entity, target:Entity){
 
-//		if(target.playerType == 2){ 
-//    		onEnemyAnimation.SetActive(true);
-//    		Debug.Log("target is enemy");
-//    	} else if (target.playerType == 0){
-//    		Debug.Log("is zero");
-//    	}
     	prepareAnimation(target);
 
     	var battleMessage : String;
