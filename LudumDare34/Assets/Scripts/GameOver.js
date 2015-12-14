@@ -18,16 +18,24 @@ public var sound_effect_played : boolean = false;
 
 public var bgm_sound : AudioSource;
 
+public var timer_script : Timer;
+
+function Awake() {
+	timer_script = GetComponent(Timer);
+}
+
 function GameOver(str : String) {
 	gameover = true;
 	gameover_panel.SetActive(true);
 	gameover_text.text = str;
+	timer_script.game_running = false;
 }
 
 function WinGame(str : String) {
 	gamewin = true;
 	gamewin_panel.SetActive(true);
 	gamewin_text.text = str;
+	timer_script.game_running = false;
 }
 
 function Update() {

@@ -2,6 +2,12 @@
 
 public class Taunt extends Action {
 
+	var gameover_script : GameOver;
+
+	function Awake(){
+		gameover_script = GetComponent(GameOver);
+	}
+
 	public function action(actor : Entity, target:Entity){
 
 		prepareAnimation(actor);
@@ -14,7 +20,7 @@ public class Taunt extends Action {
         target.taunt_count = target.taunt_count + 1;
 
         if (target.taunt_count >= 10) {
-            //Do they win?
+            gameover_script.WinGame("You successfully taunted your enemy into submission!\nCongratz!  :V");
         }
 
         StartCoroutine(waitAwhile());
