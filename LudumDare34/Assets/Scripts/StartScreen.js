@@ -1,12 +1,16 @@
 ﻿#pragma strict
+import UnityEngine.UI;
 
 var startScreen : GameObject;
 var gameControlScreen : GameObject;
 var creditsScreenPanel : GameObject;
+public var difficulty_text : Text;
 
 var timer_script : Timer;
 
 var game_started : boolean = false;
+
+static var game_difficulty : int = 1;
 
 //screen 0 - game screen
 //screen 1 - start screen
@@ -44,17 +48,19 @@ function Update () {
 			current_screen = 1;
 		}
 		else if(current_screen == 2 && Input.GetButtonDown("ButtonB")) {
-			startScreen.SetActive(false);
-			gameControlScreen.SetActive(false);
-			creditsScreenPanel.SetActive(true);
-			current_screen = 3;
+			//Change difficulty instead
+			changeDifficulty();
+			//startScreen.SetActive(false);
+			//gameControlScreen.SetActive(false);
+			//creditsScreenPanel.SetActive(true);
+			//current_screen = 3;
 		}
-		else if(current_screen == 3 && (Input.GetButtonDown("ButtonA") || Input.GetButtonDown("ButtonB"))) {
-			startScreen.SetActive(true);
-			gameControlScreen.SetActive(false);
-			creditsScreenPanel.SetActive(false);
-			current_screen = 1;
-		}
+		//else if(current_screen == 3 && (Input.GetButtonDown("ButtonA") || Input.GetButtonDown("ButtonB"))) {
+		//	startScreen.SetActive(true);
+		//	gameControlScreen.SetActive(false);
+		//	creditsScreenPanel.SetActive(false);
+		//	current_screen = 1;
+		//}
 	}
 }
 
@@ -87,8 +93,22 @@ function creditsScreen (){
 }
 
 function creditScreenOff (){
-	startScreen.SetActive(true);
-	gameControlScreen.SetActive(false);
-	creditsScreenPanel.SetActive(false);
-	current_screen = 1;
+	//startScreen.SetActive(true);
+	//gameControlScreen.SetActive(false);
+	//creditsScreenPanel.SetActive(false);
+	//current_screen = 1;
+	Application.LoadLevel(Application.loadedLevel);
+}
+
+function changeDifficulty() {
+	game_difficulty += 1;
+	if(game_difficulty == 3) {
+		game_difficulty = 1;
+	}
+	if(game_difficulty == 1) {
+		difficulty_text.text = "Easy Mode";
+	}
+	if(game_difficulty == 2) {
+		difficulty_text.text = "Hard Mode";
+	}
 }
