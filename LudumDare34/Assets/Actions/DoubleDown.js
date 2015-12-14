@@ -22,8 +22,7 @@ public class DoubleDown extends Action {
 			battleMessage = "DON'T EVER DO THAT AGAIN!!!\n";
 		}
 
-
-		dialogue_box.text = battleMessage+dialogue_box.text;
+		dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
     };
 
     public function DoubleDown(){

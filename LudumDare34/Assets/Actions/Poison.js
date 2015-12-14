@@ -18,7 +18,7 @@ public class Poison extends Action {
         target.poisoned = 3;
     
         var battleMessage:String = actor.entity_name+" poisons "+target.entity_name+".\n";
-        dialogue_box.text = battleMessage+dialogue_box.text;
+        dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
 
         StartCoroutine(waitAwhile());
 

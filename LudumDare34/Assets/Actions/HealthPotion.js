@@ -32,7 +32,7 @@ public class HealthPotion extends Action {
 	        battleMessage = "You'd like to swig a health potion, but you are out!\n";
 	    }
 
-     	dialogue_box.text = battleMessage + dialogue_box.text;
+     	dialogue_box.text = colorizeBattletext(actor, battleMessage) + dialogue_box.text;
 
 		StartCoroutine(waitAwhile());
 

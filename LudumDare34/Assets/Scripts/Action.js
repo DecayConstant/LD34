@@ -93,6 +93,16 @@ public class Action extends MonoBehaviour{
         return message;
     }
 
+    function colorizeBattletext(actor:Entity,battletext:String):String{
+    	if(actor.playerType == 1){
+    		battletext = '<color=green>'+battletext+'</color>';
+    	}else if(actor.playerType == 2){
+    		battletext = '<color=red>'+battletext+'</color>';
+    	}
+
+    	return battletext;
+    }
+
     function getBattleMessage(damage:int,actor:Entity):String {
     	var message = actor.entity_name+" attacks with "+action_name+' for ' +damage+" DAMAGE. ";
     	return message;

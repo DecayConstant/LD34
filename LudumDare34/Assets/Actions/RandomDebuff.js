@@ -36,7 +36,7 @@ public class RandomDebuff extends Action {
 		var battleMessage:String;
         battleMessage = actor.entity_name+" pulls some voodoo hocus pocus and makes "+target.entity_name+" weak to "+weakness+" attacks.\n";
         StartCoroutine(waitAwhile());
-        dialogue_box.text = battleMessage+dialogue_box.text;
+        dialogue_box.text = colorizeBattletext(actor, battleMessage)+dialogue_box.text;
 
     };
 

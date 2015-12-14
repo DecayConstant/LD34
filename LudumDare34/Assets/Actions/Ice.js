@@ -26,7 +26,7 @@ public class Ice extends Action {
         battleMessage = battleMessage + effectivenessDesc;
 
         Debug.Log(battleMessage);
-        dialogue_box.text = battleMessage + '\n' + dialogue_box.text;
+        dialogue_box.text = colorizeBattletext(actor, battleMessage) + '\n' + dialogue_box.text;
 
         StartCoroutine(waitAwhile());
 

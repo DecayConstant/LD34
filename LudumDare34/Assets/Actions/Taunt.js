@@ -17,7 +17,7 @@ public class Taunt extends Action {
     	var battleMessage:String;
 
      	battleMessage = "You make fun of " + target.entity_name + '.\n';
-     	dialogue_box.text = battleMessage + dialogue_box.text;
+     	dialogue_box.text = colorizeBattletext(actor, battleMessage) + dialogue_box.text;
 
         target.taunt_count = target.taunt_count + 1;
 
