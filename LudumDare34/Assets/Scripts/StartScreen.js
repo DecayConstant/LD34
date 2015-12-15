@@ -120,7 +120,7 @@ function changeDifficulty() {
 		difficulty_text.text = "Easy Mode";
 		DifficultySettings.setEasyMode();
 	}
-	if(DifficultySettings.game_difficulty == 1) {
+	else if(DifficultySettings.game_difficulty == 1) {
 		difficulty_text.text = "Hard Mode";
 		DifficultySettings.setHardMode();
 	}
