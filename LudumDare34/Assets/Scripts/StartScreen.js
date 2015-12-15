@@ -28,6 +28,15 @@ function Awake() {
 	creditsScreenPanel.SetActive(false);
 }
 
+function Start() {
+	if(DifficultySettings.game_difficulty == 1) {
+		difficulty_text.text = "Easy Mode";
+	}
+	if(DifficultySettings.game_difficulty == 2) {
+		difficulty_text.text = "Hard Mode";
+	}
+}
+
 function Update () {
 	if(!game_started) {
 		if(current_screen == 1 && Input.GetButtonDown("ButtonA")) {
@@ -106,15 +115,12 @@ function creditScreenOff (){
 }
 
 function changeDifficulty() {
-	game_difficulty += 1;
-	if(game_difficulty == 3) {
-		game_difficulty = 1;
-	}
-	if(game_difficulty == 1) {
+	
+	if(DifficultySettings.game_difficulty == 2) {
 		difficulty_text.text = "Easy Mode";
 		DifficultySettings.setEasyMode();
 	}
-	if(game_difficulty == 2) {
+	if(DifficultySettings.game_difficulty == 1) {
 		difficulty_text.text = "Hard Mode";
 		DifficultySettings.setHardMode();
 	}

@@ -3,6 +3,8 @@
 	
 public class DifficultySettings extends MonoBehaviour{
 
+	public static var game_difficulty : int = 1;
+
 	public static var battle_length : float = 15.0;
 
 	public static var buffMultiplier : float = 1.5;
@@ -16,6 +18,7 @@ public class DifficultySettings extends MonoBehaviour{
 
 	public static function setEasyMode(){
 		Debug.Log('EASY MODE!');
+		game_difficulty = 1;
 		battle_length = 15.0;
 
 		buffMultiplier = 1.5;
@@ -30,6 +33,7 @@ public class DifficultySettings extends MonoBehaviour{
 
 	public static function setHardMode(){
 		Debug.Log('HARD MODE!');
+		game_difficulty = 2;
 		battle_length = 15.0;;
 
 		buffMultiplier = 1.5;
